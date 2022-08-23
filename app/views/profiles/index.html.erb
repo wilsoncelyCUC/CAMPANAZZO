@@ -1,7 +1,47 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
-  <div class="container">
-    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
-    <a class="btn btn-flat" href="#">Apply now</a>
+
+
+<div class="container ">
+  <div class="search-output">
+    <div class="filters">
+    <% if params[:filter] %>
+      <% date = params[:filter][:date] %>
+      <% hour = params[:filter][:hour] %>
+      <% price = params[:filter][:price]%>
+      <% type_super = params[:filter][:type_super]%>
+    <% end %>
+      <ul class="list-inline"    >
+        <% link_date =  !date.blank? ? date : "En 7 Días" %>
+        <li><%= link_to "#{link_date}", profiles_filter_path, class:"btn-flat" %></li>
+        <% link_hour =  !hour.blank? ? hour : "Flexible"  %>
+        <li ><%= link_to "#{link_hour}",profiles_filter_path, class:"btn-flat" %></li>
+        <% link_price = !price.blank? ? price : "30k a 70k" %>
+        <li><%= link_to "#{link_price}",profiles_filter_path, class:"btn-flat" %></li>
+        <li > <%= link_to "Más Filtros",profiles_filter_path, class:"btn-flat" %></li>
+      </ul>
+    </div>
   </div>
+
+  <div class="">
+
+    <div class="cards">
+      <% @profiles.each do |profile| %>
+      <div class="card-trip">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= "#{profile.name} #{profile.last_name}" %></h2>
+            <p> <%= profile.type_professional %>: <strong><%= profile.number_jobs%> Trabajos</p></strong>
+            <p> Score: <%=profile.score%> (<%= rand(10..50) %> Recomendaciones)</p>
+            <p> Trasporte: Bicicleta</p>
+          </div>
+          <h2 class="card-trip-pricing">22.000 COP/H</h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+
+  </div>
+
 </div>
