@@ -39,3 +39,56 @@
   top: -20px;
   width: 40px;
 }
+
+// CAMPANAZZO CARD
+
+.card-campanazzo {
+  background-color: white;
+  margin: 16px 0;
+  border-radius: 4px;
+  box-shadow: 0 0 16px rgba(0,0,0,0.3);
+  padding: 16px;
+}
+
+.card-campanazzo-top {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.card-campanazzo-picture > img {
+  height: 180px;
+  border-radius: 4px 0 0 0;
+}
+
+.card-campanazzo-info {
+  padding: 16px;
+  p {
+    color: #555b6e;
+  }
+  i {
+    color: #89b0ae;
+  }
+}
+
+.card-like {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color : #89b0ae;
+  font-size: 48px;
+}
+
+.card-campanazzo-bottom {
+  width: 100%;
+  background-color: #faf9f9;
+  margin-top: 16px;
+  display: flex;
+}
+
+.card-campanazzo-footer {
+  margin-top: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

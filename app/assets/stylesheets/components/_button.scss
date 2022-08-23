@@ -40,3 +40,18 @@
   background: linear-gradient(#ffd6ba, #89b0ae);
   color: white;
 }
+
+.btn-campanazzo {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 16px;
+  background: #555b6e;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  font-size: 36px;
+}
+
+.btn-flat:hover {
+  background: #89b0ae;
+  color: white;
+}
