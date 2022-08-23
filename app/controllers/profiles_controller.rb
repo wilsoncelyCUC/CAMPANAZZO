@@ -5,6 +5,8 @@ class ProfilesController < ApplicationController
     @profiles = Profile.all
   end
 
+  def filter
+  end
 
   private
 
