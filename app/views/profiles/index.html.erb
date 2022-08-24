@@ -14,7 +14,7 @@
         <li><%= link_to "#{link_date}", profiles_filter_path, class:"btn-flat" %></li>
         <% link_hour =  !hour.blank? ? hour : "Hora Flexible"  %>
         <li ><%= link_to "#{link_hour}",profiles_filter_path, class:"btn-flat" %></li>
-        <% link_price = !price.blank? ? price : "30k$ - 70k$" %>
+        <% link_price = !price.blank? ? "#{price}$ " : "30k$ - 70k$" %>
         <li><%= link_to "#{link_price}",profiles_filter_path, class:"btn-flat" %></li>
         <li > <%= link_to "Más Filtros",profiles_filter_path, class:"btn-flat" %></li>
       </ul>
@@ -34,8 +34,8 @@
           </div>
           <div class="card-campanazzo-info">
             <div class="card-campanazzo-details">
-              <h2><strong>Wilson C.</strong></h2>
-              <h3><strong>50.000$ / Hora</strong></h3>
+              <h2><strong><%=profile.name%> <%= profile.last_name %></strong></h2>
+              <h3>50.000$ / Hora</h3>
             </div>
             <p><i class="fa-solid fa-list-check"></i> Plomero ( 200 Trabajos)</p>
             <p><strong> (100 Recomendaciones)</strong></p>

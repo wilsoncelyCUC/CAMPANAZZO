@@ -1,0 +1,29 @@
+
+<div class="container">
+  <h1>Profession index</h1>
+  <p> RESTRICTED ACCESS</p>
+
+  <div class="section">
+    <h2>CREATE Profession</h2>
+    <div class="create-profession">
+      <%= link_to "NEW PROFFESSION", new_profession_path , class: 'btn-flat'%>
+    </div>
+
+  </div>
+
+  <h2>Profession list</h2>
+
+  <% @professions.each do |profession| %>
+  <div class="card-product">
+    <img src= <%=profession.url_photo %> />
+    <div class="card-product-infos">
+      <h2><%= profession.name %></h2>
+      <h2>Recomended price <strong><%= profession.recommended_price %></strong></h2>
+      <p>currency: <%= profession.currency %></p>
+    </div>
+  </div>
+  <%= link_to "edit profile", edit_profession_path(profession)%>
+
+  <% end %>
+
+</div>

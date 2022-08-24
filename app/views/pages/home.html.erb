@@ -1,7 +1,79 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <div class="container">
-    <h1>Reserva tu proxima <strong>Trabajo</strong>!</h1>
-    <p>Encuentra una professional con experiencia que te ayudará con cualquier tarea</p>
-    <a class="btn btn-flat" href="#">Apply now</a>
+    <h1>Reserva un Trabajador!</h1>
+    <p>Porque saber hacer algo no significa <strong>que debo hacerlo</strong></p>
+    <div class="start-form">
+      <%= render '/shared/form-start' %>
+    </div>
+  </div>
+</div>
+
+<div class="container ">
+  <div class="home-booker margin-top-negative">
+    <%= link_to  "Reservar trabajador", "#", class: "btn-booker" %>
+  </div>
+
+  <div class="home-work-near-me">
+    <h2>Trabajos mas buscados en mi sector</h2>
+    <div class="cards">
+      <% @professions.each do |profession| %>
+      <div class="card-product">
+        <img src= <%=profession.url_photo %> />
+        <div class="card-product-infos">
+          <h2><%= profession.name %></h2>
+          <p>Precio promedio <strong><%= profession.recommended_price %></strong> <%= profession.currency %></p>
+          <p>Por <%= profession.unit %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card-feedback">
+    <img src="https://images.pexels.com/photos/4939597/pexels-photo-4939597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Picture happy living">
+    <div class="mini-container">
+      <h2>Para que la vida se más sencilla</h2>
+      <ul class ="list-inline ">
+        <li><i class="fa-solid fa-check-double"></i> Selecciona un Trabajador en funcion de sus competencias, precio y <strong>recomendaciones</strong></li>
+        <li><i class="fa-solid fa-calendar-check"></i>   Elige el horario que mas te conviene </li>
+        <li><i class="fa-brands fa-rocketchat"></i>   Chatea, paga y evalua a tu trabajador</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="home-workers">
+    <h2>Algunos trabajadores listos para ayudarte</h2>
+    <div class="cards">
+      <% @profiles.each do |profile| %>
+      <div class="card-campanazzo">
+        <div class="card-campanazzo-top">
+          <div class="card-campanazzo-picture">
+            <i class="card-like fa-brands fa-pagelines"></i>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
+          </div>
+          <div class="card-campanazzo-info">
+            <div class="card-campanazzo-details">
+              <h2><strong><%=profile.name%> <%= profile.last_name %></strong></h2>
+              <h3>50.000$ / Hora</h3>
+            </div>
+            <p><i class="fa-solid fa-list-check"></i> Plomero ( 200 Trabajos)</p>
+            <p><strong> (100 Recomendaciones)</strong></p>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <p> <i class="fa-solid fa-truck"></i> Bicicleta</p>
+          </div>
+        </div>
+        <div class="card-campanazzo-bottom">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat aliquam suscipit, est quae quibusdam, nisi minima tempore cupiditate aspernatur vel omnis molestiae inventore ab earum, totam aut praesentium dolores? Ducimus.</p>
+        </div>
+      </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

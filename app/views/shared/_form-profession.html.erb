@@ -1,0 +1,14 @@
+<%= simple_form_for(@profession) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :recommended_price %>
+    <%= f.input :unit, collection: Profession::UNIT%>
+    <%= f.input :currency, collection: Profession::CURRENCY%>
+    <%= f.input :url_photo%>
+
+    <div class="buttons">
+      <%= f.submit class:"btn-flat" %>
+      <button class= "create-gradient" href="#">
+        <%= link_to "Return to home page", root_path %>
+      </button>
+    </div>
+  <% end %>
