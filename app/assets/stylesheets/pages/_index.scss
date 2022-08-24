@@ -1,16 +1,21 @@
 // Import page-specific CSS files here.
 @import "home";
 
-link
+p {
+  margin:0px;
+}
+
+h1, h2, h3, h4 {
+  margin: 0px;
+}
 
 .main-container {
   display: flex;
 }
 
-
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr ;
   grid-gap: 16px;
   padding: 16px;
 }
@@ -32,20 +37,20 @@ link
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .cards {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr ;
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr ;
   }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr ;
   }
 }

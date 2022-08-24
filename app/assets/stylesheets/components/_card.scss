@@ -1,5 +1,41 @@
+// card product (used on professions)
+
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
 
 
+
+// card trip
 .card-trip {
   overflow: hidden;
   background: white;
@@ -38,4 +74,75 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+// CAMPANAZZO CARD
+
+.card-campanazzo {
+  background-color: white;
+  margin: 16px 0;
+  border-radius: 4px;
+  box-shadow: 0 0 16px rgba(0,0,0,0.3);
+  padding: 16px;
+}
+
+.card-campanazzo-top {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.card-campanazzo-picture > img {
+  height: 180px;
+  border-radius: 4px 0 0 0;
+}
+
+.card-campanazzo-info {
+  padding: 16px;
+  p {
+    color: #555b6e;
+  }
+  i {
+    color: #89b0ae;
+  }
+}
+
+.card-like {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color : #89b0ae;
+  font-size: 48px;
+}
+
+.card-campanazzo-bottom {
+  width: 100%;
+  background-color: #faf9f9;
+  margin-top: 16px;
+  display: flex;
+}
+
+.card-campanazzo-footer {
+  margin-top: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+// Card feedback
+
+.card-feedback {
+  margin-top: 16px;
+  width: 100%;
+  background-color: #faf9f9;
+
+  img {
+    width: 100%;
+    padding: 24px;
+    background-size: cover;
+    background-position: center;
+  }
+}
+.mini-container {
+  padding-left: 24px;
 }
