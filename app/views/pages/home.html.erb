@@ -44,32 +44,36 @@
   <div class="home-workers">
     <h2>Algunos trabajadores listos para ayudarte</h2>
     <div class="cards">
-      <% @profiles.each do |profile| %>
-      <div class="card-campanazzo">
-        <div class="card-campanazzo-top">
-          <div class="card-campanazzo-picture">
+      <% @profiles_top.each do |profile| %>
+      <div class="card-home-campanazzo">
+        <div class="card-home-campanazzo-top">
+          <div class="card-home-campanazzo-picture">
             <i class="card-like fa-brands fa-pagelines"></i>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
           </div>
-          <div class="card-campanazzo-info">
-            <div class="card-campanazzo-details">
+          <div class="card-home-campanazzo-info">
+            <div class="card-home-campanazzo-details">
               <h2><strong><%=profile.name%> <%= profile.last_name %></strong></h2>
-              <h3>50.000$ / Hora</h3>
             </div>
-            <p><i class="fa-solid fa-list-check"></i> Plomero ( 200 Trabajos)</p>
-            <p><strong> (100 Recomendaciones)</strong></p>
+            <p><strong> 100 Recomendaciones</strong></p>
             <div class="rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
+            <% start = (profile.score.ceil) %>
+            <% start.times do |start| %>
+            <i class="fas fa-star"></i>
+            <% end %>
+            <% (5-start).times do |start| %>
+            <i class="far fa-star"></i>
+            <% end %>
             </div>
             <p> <i class="fa-solid fa-truck"></i> Bicicleta</p>
           </div>
         </div>
-        <div class="card-campanazzo-bottom">
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat aliquam suscipit, est quae quibusdam, nisi minima tempore cupiditate aspernatur vel omnis molestiae inventore ab earum, totam aut praesentium dolores? Ducimus.</p>
+        <div class="card-home-campanazzo-bottom">
+          <h3>competencias Utiles</h3>
+          <div class="card-home-campanazzo-myProfessions">
+            <p>Jardineria</p>
+            <p>40 EU</p>
+          </div>
         </div>
       </div>
         <% end %>

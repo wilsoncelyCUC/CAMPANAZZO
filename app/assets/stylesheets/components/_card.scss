@@ -129,6 +129,69 @@
   justify-content: center;
 }
 
+// card-campanazzo-home (profession showcasing their professions with price)
+.card-home-campanazzo {
+  background-color: white;
+  margin: 16px 0;
+  border-radius: 4px;
+  box-shadow: 0 0 16px rgba(0,0,0,0.3);
+  padding: 16px;
+}
+
+.card-home-campanazzo-top {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.card-home-campanazzo-picture > img {
+  height: 180px;
+  border-radius: 4px 0 0 0;
+}
+
+.card-home-campanazzo-info {
+  padding: 16px;
+  p {
+    color: #555b6e;
+  }
+  i {
+    color: #89b0ae;
+  }
+}
+
+.card-home-like {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color : #89b0ae;
+  font-size: 48px;
+}
+
+.card-home-campanazzo-bottom {
+  width: 100%;
+  background-color: #faf9f9;
+  margin-top: 16px;
+
+  h2,h2,h3,p {
+    padding: 4px 16px;
+  }
+}
+
+.card-home-campanazzo-footer {
+  margin-top: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-home-campanazzo-myProfessions{
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+
 // Card feedback
 
 .card-feedback {
