@@ -40,11 +40,13 @@
             <p><i class="fa-solid fa-list-check"></i> Plomero ( 200 Trabajos)</p>
             <p><strong> (100 Recomendaciones)</strong></p>
             <div class="rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
+            <% start = (profile.score.ceil) %>
+            <% start.times do |start| %>
+            <i class="fas fa-star"></i>
+            <% end %>
+            <% (5-start).times do |start| %>
+            <i class="far fa-star"></i>
+            <% end %>
             </div>
             <p> <i class="fa-solid fa-truck"></i> Bicicleta</p>
           </div>
