@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :professions
   resources :profiles
+  resources :posts
+
 end
