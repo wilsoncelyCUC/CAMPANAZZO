@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :professions
   resources :profiles
+
+  # to remove after developpement
+  get "components", to: "pages#components"
 end
