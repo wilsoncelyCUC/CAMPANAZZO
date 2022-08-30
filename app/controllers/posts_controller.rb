@@ -7,12 +7,16 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    session[:profession_name] = params[:search][:query] #storing the input from form-start into the session variable
+
   end
 
   def create
     find_profile_customer
     @post= Post.new(post_params)
-    #byebug
+    byebug
+    profession = get_profession(session[:profession_name])
+    @post.profession_id = profession ?  profession.id : nil
     @post.profile_id = @profile_customer.id
     @post.profession_id = Profession.last.id
     if @post.save
@@ -36,12 +40,16 @@ class PostsController < ApplicationController
 
   private
 
+  def get_profession(element)
+    (Profession.where( "name = ?" , element)).first
+  end
+
   def find_post
     @post = Post.find(params[:id])
   end
 
+  # When you log up, a new user is created, however, a profile_id is required for the post creation. This method creates a profile_id when the current_user does not have one.
   def find_profile_customer
-    # When you log up, a new user is created, however, a profile_id is required for the post creation. This method creates a profile_id when the current_user does not have one.
     if Profile.find_by(user_id: current_user)
       @profile_customer = Profile.find_by(user_id: current_user)
     else

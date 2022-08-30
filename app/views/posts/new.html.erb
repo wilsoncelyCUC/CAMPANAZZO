@@ -1,14 +1,14 @@
-<%= simple_form_for(@post) do |f| %>
-    <%= f.input :address %>
-    <%= f.input :date %>
-    <%= f.input :available_48, collection: Post::AVAILABILITY_48%>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :quick_assessment, collection: Post::ASSESSMENT%>
-    <%= f.input :transport, collection: Post::TRANSPORT%>
-    <div class="buttons">
-      <%= f.submit class:"btn-flat" %>
-      <button class= "create-gradient" href="#">
-        <%= link_to "Return to home page", root_path %>
-      </button>
-    </div>
+
+
+<div class="container">
+  <% if params[:search] %>
+    <h1>You are looking for: <%= params[:search][:query] %></h1>
+  <% else %>
+    <h1>New Post</h1>
   <% end %>
+
+  <%= render "shared/form-post", post: @post %>
+  <ul class="nav">
+    <li><%= link_to "Back", root_path, :class => "nav-item px-1"%></li>
+  </ul>
+</div>
