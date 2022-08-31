@@ -7,5 +7,8 @@ class PagesController < ApplicationController
     @profiles_top= (Profile.where(score: 4..5 )).limit(5).order("score DESC")
   end
 
+# to remove after components developpement
+  def components
 
+  end
 end
