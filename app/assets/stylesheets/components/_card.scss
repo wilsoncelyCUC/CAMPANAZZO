@@ -16,7 +16,7 @@
 }
 
 .card-product h2 {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   margin: 0;
 }
@@ -30,7 +30,7 @@
 }
 
 .card-product .card-product-infos {
-  padding: 16px;
+  padding: 1rem;
 }
 
 
@@ -49,7 +49,7 @@
 }
 
 .card-trip h2 {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   margin: 0;
 }
@@ -62,7 +62,7 @@
 
 
 .card-trip .card-trip-infos {
-  padding: 16px;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -71,7 +71,7 @@
 
 .card-trip-infos .card-trip-user {
   position: absolute;
-  right: 16px;
+  right: 1rem;
   top: -20px;
   width: 40px;
 }
@@ -80,10 +80,10 @@
 
 .card-campanazzo {
   background-color: white;
-  margin: 16px 0;
+  margin: 1rem 0;
   border-radius: 4px;
-  box-shadow: 0 0 16px rgba(0,0,0,0.3);
-  padding: 16px;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+  padding: 1rem;
 }
 
 .card-campanazzo-top {
@@ -98,7 +98,7 @@
 }
 
 .card-campanazzo-info {
-  padding: 16px;
+  padding: 1rem;
   p {
     color: #555b6e;
   }
@@ -109,8 +109,8 @@
 
 .card-like {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: 1rem;
+  left: 1rem;
   color : #89b0ae;
   font-size: 48px;
 }
@@ -118,12 +118,12 @@
 .card-campanazzo-bottom {
   width: 100%;
   background-color: #faf9f9;
-  margin-top: 16px;
+  margin-top: 1rem;
   display: flex;
 }
 
 .card-campanazzo-footer {
-  margin-top: 16px;
+  margin-top: 1rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -132,10 +132,10 @@
 // card-campanazzo-home (profession showcasing their professions with price)
 .card-home-campanazzo {
   background-color: white;
-  margin: 16px 0;
+  margin: 1rem 0;
   border-radius: 4px;
-  box-shadow: 0 0 16px rgba(0,0,0,0.3);
-  padding: 16px;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+  padding: 1rem;
 }
 
 .card-home-campanazzo-top {
@@ -150,7 +150,7 @@
 }
 
 .card-home-campanazzo-info {
-  padding: 16px;
+  padding: 1rem;
   p {
     color: #555b6e;
   }
@@ -161,8 +161,8 @@
 
 .card-home-like {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: 1rem;
+  left: 1rem;
   color : #89b0ae;
   font-size: 48px;
 }
@@ -170,15 +170,15 @@
 .card-home-campanazzo-bottom {
   width: 100%;
   background-color: #faf9f9;
-  margin-top: 16px;
+  margin-top: 1rem;
 
   h2,h2,h3,p {
-    padding: 4px 16px;
+    padding: 4px 1rem;
   }
 }
 
 .card-home-campanazzo-footer {
-  margin-top: 16px;
+  margin-top: 1rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -195,7 +195,7 @@
 // Card feedback
 
 .card-feedback {
-  margin-top: 16px;
+  margin-top: 1rem;
   width: 100%;
   background-color: #faf9f9;
 
@@ -217,13 +217,13 @@
   align-items: center;
   margin-bottom: 8px;
   background: #FAF9F9;
-  padding: 8px 16px;
+  padding: 8px 1rem;
   border: 1px solid rgb(235,235,235);
   border-radius: 8px;
-  margin-top: 16px;
+  margin-top: 1rem;
 
   p {
-    margin-left: 16px;
+    margin-left: 1rem;
     line-height: 1.4;
   }
 }

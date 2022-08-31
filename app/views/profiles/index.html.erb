@@ -40,7 +40,7 @@
             <p><i class="fa-solid fa-list-check"></i> Plomero ( 200 Trabajos)</p>
             <p><strong> (100 Recomendaciones)</strong></p>
             <div class="rating">
-            <% start = (profile.score.ceil) %>
+            <% start = profile.score.nil? ? 3 : profile.score.ceil %>
             <% start.times do |start| %>
             <i class="fas fa-star"></i>
             <% end %>

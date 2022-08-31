@@ -29,8 +29,8 @@ h2,h3,h4,h5{
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr ;
-  grid-gap: 16px;
-  padding: 16px;
+  grid-gap: 1rem;
+  padding: 1rem;
 }
 
 .blue-text{
