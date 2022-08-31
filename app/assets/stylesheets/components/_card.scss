@@ -209,3 +209,26 @@
 .mini-container {
   padding-left: 24px;
 }
+
+
+// card tell-us, found on the post_new
+.card-post-new-tell-us {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: #FAF9F9;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
+  border-radius: 8px;
+  margin-top: 16px;
+
+  p {
+    margin-left: 16px;
+    line-height: 1.4;
+  }
+}
+
+.card-post-new-tell-us-more .card-post-new-tell-us-info {
+  flex-grow: 1;
+  padding: 0 24px;
+}

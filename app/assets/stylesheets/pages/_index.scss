@@ -1,8 +1,13 @@
 // Import page-specific CSS files here.
 @import "home";
 
+body {
+  background-color: white;
+}
+
 p {
   margin:0px;
+  color: #077187;
 }
 
 h1, h2, h3, h4 {
