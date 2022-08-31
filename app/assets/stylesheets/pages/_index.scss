@@ -41,6 +41,11 @@ h2,h3,h4,h5{
   color: $cred;
 }
 
+.bold{
+  color:black;
+  font-weight: 600;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
