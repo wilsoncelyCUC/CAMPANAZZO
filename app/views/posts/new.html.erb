@@ -1,11 +1,21 @@
 
 
 <div class="container">
+
+  <div class="card-post-new-tell-us">
+    <img src="https://res.cloudinary.com/wectcorp/image/upload/v1661920987/icon_campanazzo_qhypix.png"  class="avatar-large" alt="avatar image campanazzo">
+    <div class="card-post-new-tell-us-info">
+      <p>Tell us more about you've like to do, and we will find the <strong>most suitable person</strong> for this job</p>
+    </div>
+  </div>
+
+  <div class="title_page">
   <% if params[:search] %>
-    <h1>You are looking for: <%= params[:search][:query] %></h1>
+    <h1><%= params[:search][:query] %></h1>
   <% else %>
     <h1>New Post</h1>
   <% end %>
+  </div>
 
   <%= render "shared/form-post", post: @post %>
   <ul class="nav">
