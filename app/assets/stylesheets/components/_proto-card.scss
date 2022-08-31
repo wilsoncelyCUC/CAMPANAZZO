@@ -29,14 +29,16 @@
     justify-content: space-evenly;
     // styling
     border-bottom: 1px solid $cwhite;
-    padding-bottom: 0.3em;
+    padding-bottom: 0.8em;
 
   }
     .product-img-div{
       padding-right: 1em;
     }
-    .product-rating{
+    .product-header-content{
       flex-grow: 1;
+      // styling
+      padding-top: 0.2em;
     }
 
   .product-content{
