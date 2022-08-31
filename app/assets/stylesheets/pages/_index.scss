@@ -1,6 +1,10 @@
 // Import page-specific CSS files here.
 @import "home";
 
+body{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}
 p {
   margin:0px;
   color: $cdark;
@@ -38,8 +42,8 @@ h2,h3,h4,h5{
 }
 
 .bold{
-  color:black;
-  font-weight: 600;
+  color: #074652;
+  font-weight: 400;
 }
 
 // Smallest device
