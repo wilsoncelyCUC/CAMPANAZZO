@@ -1,0 +1,63 @@
+// product-card
+
+.product-card{
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  margin-top: 1em;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-evenly;
+  // styling
+    h1{
+      font-size: 1.5em;
+    }
+    h3{
+      font-size: 1em;
+    }
+  background-color: white;
+  padding: 1em;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+  .product-header{
+    display: flex;
+    justify-content: space-evenly;
+    // styling
+    border-bottom: 1px solid $cwhite;
+    padding-bottom: 0.3em;
+    *  {
+      padding: 0.1em;
+    }
+  }
+    .product-img-div{
+
+    }
+    .product-rating{
+      flex-grow: 1;
+    }
+
+  .product-content{
+    margin-top: .3em;
+  }
+    .product-content-header{
+      margin-bottom: 1em;
+      }
+
+    .product-content-description{
+      display: flex;
+      justify-content: space-between;
+      * {
+        color: $cblue;
+      }
+    }
+      .product-content-description-skills{
+
+      }
+
+      .product-content-description-prices{
+
+      }
+
+// profile-card
