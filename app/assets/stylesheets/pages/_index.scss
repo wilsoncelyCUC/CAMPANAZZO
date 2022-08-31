@@ -29,6 +29,14 @@ h2,h3,h4,h5{
   padding: 16px;
 }
 
+.blue-text{
+  color: $cblue;
+}
+
+.red-text{
+  color: $cred;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
