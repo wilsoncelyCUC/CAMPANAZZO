@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   def create
     find_profile_customer
     @post= Post.new(post_params)
-    byebug
+    #byebug
     profession = get_profession(session[:profession_name])
     @post.profession_id = profession ?  profession.id : nil
     @post.profile_id = @profile_customer.id
