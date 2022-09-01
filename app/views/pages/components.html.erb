@@ -1,65 +1,98 @@
-<div class="container row">
 
-  <%# product card %>
-  <div class="col-12 col-lg-3">
-    <div class="product-card">
-      <div class="product-header">
-        <div class="product-img-div"><img class="avatar-large" src="https://avatars.githubusercontent.com/u/96889576?v=4" alt=""></div>
-        <div class="product-header-content">
-          <h1>Wilson C.</h1>
-          <p class="red-text">99% positive reviews <br> 1 delivery task</h3>
+<%# campanazzo icon library %>
+  <%# <i class="fa-solid fa-plus"></i> %>
+  <%# <i class="fa-regular fa-circle-check"></i> %>
+  <%# <i class="fa-solid fa-car-side"></i> %>
+  <%# <i class="fa-regular fa-user"></i> %>
+  <%# <i class="fa-regular fa-compass"></i> %>
+  <%# <i class="fa-regular fa-message"></i> %>
 
-        </div>
-      </div>
-      <div class="product-content">
-        <div class="product-content-header">
-          <h3>Featured Skills</h3>
-        </div>
-        <div class="product-content-description">
-          <div class="product-content-description-skills">
-            <p>Delivery</p>
-            <p>Help moving</p>
-            <p>Home repairs</p>
+<%# components %>
+
+<div class="container">
+  <div class="row">
+    <%# product card %>
+    <div class=" col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+      <div class="product-card">
+        <div class="product-header">
+          <div class="product-img-div"><%= image_tag ("wilson_test.png"), class: "avatar-large" %></div>
+          <div class="product-header-content">
+            <h1>Wilson C.</h1>
+            <p class="red-text"><i class="bold fa-solid fa-star"></i> 99% positive reviews <br><i class="fa-regular fa-circle-check bold"></i> 1 delivery task</h3>
+
           </div>
-          <div class="product-content-description-prices">
-            <p>$41/hr</p>
-            <p>$75/hr</p>
-            <p>$65/hr</p>
+        </div>
+        <div class="product-content">
+          <div class="product-content-header">
+            <h3>Featured Skills</h3>
+          </div>
+          <div class="product-content-description">
+            <div class="product-content-description-skills">
+              <p>Delivery</p>
+              <p>Help moving</p>
+              <p>Home repairs</p>
+            </div>
+            <div class="product-content-description-prices bold">
+              <p>$41/hr</p>
+              <p>$75/hr</p>
+              <p>$65/hr</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <%# profile-card %>
-  <div class="col-12 col-lg-3">
-    <div class="profile-card">
-      <div class="profile-header">
-        <div class="profile-img-container">
-          <div class="img"></div>
+    <%# profile-card %>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-img-container">
+            <div class="img"></div>
+          </div>
+          <div class="profile-rating">
+            <i class="fa-solid fa-car-side"></i>
+          </div>
+          <div class="profile-price"></div>
         </div>
-        <div class="profile-rating"></div>
-        <div class="profile-price"></div>
-      </div>
-      <div class="profile-content">
-        <div class="profile-content-description"></div>
-        <div class="btn"></div>
+        <div class="profile-content">
+          <div class="profile-content-description"></div>
+          <div class="btn"></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <%# job-card %>
-  <div class="col-12 col-lg-3">
-    <div class="review-card">
-      <div class="review-header">
+    <%# job-card %>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+      <div class="review-card">
         <div class="review-header">
-          <div class="review-content"></div>
-          <div class="review-date"></div>
+          <div class="review-header">
+            <div class="review-content"></div>
+            <div class="review-date"></div>
+          </div>
         </div>
+        <div class="review-description"></div>
+        <div class="review-rating"></div>
       </div>
-      <div class="review-description"></div>
-      <div class="review-rating"></div>
     </div>
   </div>
 
+</div>
+
+<%# navbar %>
+<div class="navbar">
+  <%= link_to root_path do %>
+    <i class="fa-regular fa-compass"></i>
+    <%  %>
+  <%= link_to root_path do %>
+    <%= image_tag "" %>
+    <%  %>
+  <%= link_to root_path do %>
+    <%= image_tag "" %>
+    <%  %>
+  <%= link_to root_path do %>
+    <%= image_tag "" %>
+    <%  %>
+  <%= link_to root_path do %>
+    <%= image_tag "" %>
+    <%  %>
 </div>
