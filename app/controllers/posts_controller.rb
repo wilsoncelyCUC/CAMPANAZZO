@@ -2,7 +2,10 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
+    find_profile_customer
     @posts = Post.new
+    @my_posts_current = Post.where('date >= ? AND profile_id = ?' , DateTime.now,  @profile_customer.id )
+    @my_posts_past = Post.where('date < ? AND profile_id = ?' , DateTime.now,  @profile_customer.id )
   end
 
   def new
@@ -19,6 +22,7 @@ class PostsController < ApplicationController
     @post.profession_id = profession ?  profession.id : nil
     @post.profile_id = @profile_customer.id
     @post.profession_id = Profession.last.id
+    @post.name = "Servicio de #{profession.name}"
     if @post.save
       redirect_to posts_path
     else
@@ -41,7 +45,9 @@ class PostsController < ApplicationController
   private
 
   def get_profession(element)
-    (Profession.where( "name = ?" , element)).first
+    #Temp Hard-code, if the profession isn't found then it return cleaning.
+    #correction will be provided an autocomplete list_of_profession in the homepage bar
+    Profession.find_by(name: element) ? Profession.find_by(name: element) : Profession.find_by(name: 'Limpieza')
   end
 
   def find_post
