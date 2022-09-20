@@ -3,9 +3,16 @@ class PostsController < ApplicationController
 
   def index
     find_profile_customer
-    @posts = Post.new
+    @posts = Post.all
     @my_posts_current = Post.where('date >= ? AND profile_id = ?' , DateTime.now,  @profile_customer.id )
     @my_posts_past = Post.where('date < ? AND profile_id = ?' , DateTime.now,  @profile_customer.id )
+
+    def filter_by_type
+      @posts = Post.where(state: params[:type_filter])
+      render partial: 'shared/cards-posts', locals: { posts: posts }
+    end
+
+
   end
 
   def new
@@ -17,7 +24,6 @@ class PostsController < ApplicationController
   def create
     find_profile_customer
     @post= Post.new(post_params)
-    byebug
     profession = get_profession(session[:profession_name])
     @post.profession_id = profession ?  profession.id : nil
     @post.profile_id = @profile_customer.id
@@ -41,6 +47,8 @@ class PostsController < ApplicationController
 
   def destroy
   end
+
+
 
   private
 

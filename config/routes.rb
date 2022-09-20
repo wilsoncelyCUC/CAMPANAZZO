@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
 
   resources :professions
-  resources :profiles
+  resources :profiles do
+    resources :post, only: [:index]
+  end
   resources :posts do
     resources :reservations, only: [:new, :create, :index]
   end

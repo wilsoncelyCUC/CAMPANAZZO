@@ -2,21 +2,23 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="tabs"
 export default class extends Controller {
-  static targets  = ["tab_left", "tab_right"]
+  static targets  = ["tab", "card"]
 
-
+// displays arrays of cards based on type of tab
   display_info () {
-    if (this.tab_leftTarget.classList.contains('active') && !this.tab_rightTarget.classList.contains('active') )  {
-      console.log("left has the class");
-      this.tab_rightTarget.classList.remove('active')
-      } else if (!this.tab_leftTarget.classList.contains('active') && this.tab_rightTarget.classList.contains('active') )  {
-        console.log("the right has the active class");
-        this.tab_leftTarget.classList.remove('active')
-        this.tab_rightTarget.classList.add('active')
-      } else {
+    this.request = new Request(event.target.dataset.toggleUrl);
+    this.fetchContent(this.request);
 
-        console.log('other case');
-      }
+  }
 
+  fetchContent(request) {
+    fetch(request)
+      .then((response) => {
+        if (response.status == 200) {
+          response.text().then((text) => this.cardsTarget.innerHTML = text);
+        } else {
+          console.log("Couldn't load data");
+        }
+      })
   }
 }
