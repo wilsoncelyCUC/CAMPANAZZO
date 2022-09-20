@@ -5,18 +5,16 @@
   <div class="index-tabs" data-controller="tabs">
     <ul class="list-inline tabs-underlined">
       <li>
-        <a href="#" class="tab-underlined active">Current</a>
+        <a href="#" class="tab-underlined active " data-tabs-target="tab_left"
+                                            data-action="click->tabs#display_info">Current</a>
       </li>
       <li>
-        <a href="#" class="tab-underlined">Past</a>
+    <a href="#" class="tab-underlined " data-tabs-target="tab_right"
+                                            data-action="click->tabs#display_info">Past</a>
       </li>
-
+      <div data-toggle-target='cards'>
+        <%= render 'shared/cards-posts', post: @post %>
+      </div>
     </ul>
   </div>
 </div>
-
-        <%# <% @my_posts.each do |my_post| %>
-        <%# byebug %>
-           <%# <h2>= my_post.address </h2> %>
-          <%# <p>= my_post.name</p> %>
-        <%# end %>
