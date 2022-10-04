@@ -4,11 +4,11 @@
 body{
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
-  background: white;
+  background: $cwhite;
 }
 p {
   margin:0px;
-  color: $cdark;
+  color: $cblack;
 }
 
 h1, h2, h3, h4 {
@@ -16,11 +16,11 @@ h1, h2, h3, h4 {
 }
 
 h1{
-  color: $cblue;
+  color: $csecond;
 }
 
 h2,h3,h4,h5{
-  color: $cred;
+  color: $cblack;
 }
 
 .main-container {
@@ -34,16 +34,16 @@ h2,h3,h4,h5{
   padding: 1rem;
 }
 
-.blue-text{
-  color: $cblue;
-}
+// .blue-text{
+//   color: $csecond;
+// }
 
-.red-text{
-  color: $cred;
-}
+// .red-text{
+//   color: $cblack;
+// }
 
 .bold{
-  color: #074652;
+  color: $cfirst;
   font-weight: 400;
 }
 

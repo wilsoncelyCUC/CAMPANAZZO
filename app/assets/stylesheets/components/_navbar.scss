@@ -1,16 +1,22 @@
-.navbar-lewagon {
+.navbar-campanazzo {
   justify-content: space-between;
-  background: #077187;
-  color: white;
+  background: $cfirst;
+  color: $cwhite;
 }
 
 .nav-link{
- // color: cblue;
+  color: $csecond;
 }
-.navbar-lewagon .navbar-collapse {
+
+.nav-link-color{
+  color: $cwhite;
+  text-decoration: none;
+  padding: 8px;
+}
+.navbar-campanazzo .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-campanazzo .navbar-brand img {
   width: 200px;
 }

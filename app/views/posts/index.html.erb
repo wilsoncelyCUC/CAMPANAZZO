@@ -7,7 +7,7 @@
       <button class="nav-link active" id="pills-current-tab" data-bs-toggle="pill" data-bs-target="#pills-current" type="button" role="tab" aria-controls="pills-current" aria-selected="true">current</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="pills-past-tab" data-bs-toggle="pill" data-bs-target="#pills-past" type="button" role="tab" aria-controls="pills-past" aria-selected="false">past</button>
+      <button class="nav-link " id="pills-past-tab" data-bs-toggle="pill" data-bs-target="#pills-past" type="button" role="tab" aria-controls="pills-past" aria-selected="false">past</button>
     </li>
   </ul>
 
@@ -17,6 +17,7 @@
       <% @my_posts_current.each do |post| %>
         <h2>post current</h2>
         <p><%= post.name %></p>
+        <a href="#">this is a link</a>
       <% end %>
     </div>
     <div class="tab-pane fade" id="pills-past" role="tabpanel" aria-labelledby="pills-past-tab">
