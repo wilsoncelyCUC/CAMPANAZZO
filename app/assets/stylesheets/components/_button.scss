@@ -1,6 +1,6 @@
 .btn-ghost {
-  color: #555b6e;
-  border: 1px solid #555b6e;
+  color: $cfirst;
+  border: 1px solid $cfirst;
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: lighter;
@@ -13,60 +13,60 @@
 }
 
 .btn-flat {
-  color: white;
+  color: $cwhite;
   padding: 8px 24px;
   border-radius: 16px;
-  background: #555b6e;
+  background: $cfirst;
   transition: background 0.3s ease;
   text-decoration: none;
 }
 
 .btn-flat:hover {
-  background: #89b0ae;
-  color: white;
+  background: $csecond;
+  color: $cwhite;
 }
 
 .btn-gradient {
-  color: white;
+  color: $cwhite;
   padding: 8px 24px;
   border-radius: 4px;
   font-weight: bold;
-  background: linear-gradient(#89b0ae, #bee3db);
+  background: linear-gradient($cfirst, $csecond);
   transition: background 0.3s ease;
-  border: 1px solid #faf9f9;
+  border: 1px solid $csecond;
 }
 
 .btn-gradient:hover {
-  background: linear-gradient(#ffd6ba, #89b0ae);
-  color: white;
+  background: linear-gradient($csecond, $cfirst);
+  color: $cwhite;
 }
 
 .btn-campanazzo {
-  color: white;
+  color: $cwhite;
   padding: 8px 24px;
   border-radius: 16px;
-  background: #555b6e;
+  background: $cfirst;
   transition: background 0.3s ease;
   text-decoration: none;
   font-size: 36px;
 }
 
 .btn-campanazzo:hover {
-  background: #89b0ae;
-  color: white;
+  background: $csecond;
+  color: $cwhite;
 }
 
 .btn-booker {
-  color: white;
+  color: $cwhite;
   padding: 24px 48px;
   border-radius: 16px;
-  background: #555b6e;
+  background: $cfirst;
   transition: background 0.3s ease;
   text-decoration: none;
   font-size: 32px;
 }
 
 .btn-booker:hover {
-  background: #89b0ae;
-  color: white;
+  background: $csecond;
+  color: $cwhite;
 }

@@ -3,7 +3,7 @@
 .card-product {
   overflow: hidden;
   height: 120px;
-  background: white;
+  background: $cwhite-cards;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
@@ -38,7 +38,7 @@
 // card trip
 .card-trip {
   overflow: hidden;
-  background: white;
+  background: $cwhite-cards;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
@@ -79,7 +79,7 @@
 // CAMPANAZZO CARD
 
 .card-campanazzo {
-  background-color: white;
+  background-color: $cwhite-cards;
   margin: 1rem 0;
   border-radius: 4px;
   box-shadow: 0 0 1rem rgba(0,0,0,0.3);
@@ -100,10 +100,10 @@
 .card-campanazzo-info {
   padding: 1rem;
   p {
-    color: #555b6e;
+    color: $cfirst;
   }
   i {
-    color: #89b0ae;
+    color: $csecond;
   }
 }
 
@@ -111,13 +111,13 @@
   position: absolute;
   top: 1rem;
   left: 1rem;
-  color : #89b0ae;
+  color : $csecond;
   font-size: 48px;
 }
 
 .card-campanazzo-bottom {
   width: 100%;
-  background-color: #faf9f9;
+  background-color: $cfourth;
   margin-top: 1rem;
   display: flex;
 }
@@ -131,11 +131,11 @@
 
 // card-campanazzo-home (profession showcasing their professions with price)
 .card-home-campanazzo {
-  background-color: white;
-  margin: 1rem 0;
+  background-color: $cwhite-cards;
+  margin: 0.5rem;
   border-radius: 4px;
   box-shadow: 0 0 1rem rgba(0,0,0,0.3);
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .card-home-campanazzo-top {
@@ -145,31 +145,31 @@
 }
 
 .card-home-campanazzo-picture > img {
-  height: 180px;
+  height: 140px;
   border-radius: 4px 0 0 0;
 }
 
 .card-home-campanazzo-info {
-  padding: 1rem;
+  padding: 0.5rem;
   p {
-    color: #555b6e;
+    color: $cfirst;
   }
   i {
-    color: #89b0ae;
+    color: $csecond;
   }
 }
 
 .card-home-like {
   position: absolute;
-  top: 1rem;
+  top: 0.5rem;
   left: 1rem;
-  color : #89b0ae;
+  color : $csecond;
   font-size: 48px;
 }
 
 .card-home-campanazzo-bottom {
   width: 100%;
-  background-color: #faf9f9;
+  background-color: $cfourth;
   margin-top: 1rem;
 
   h2,h2,h3,p {
@@ -197,7 +197,7 @@
 .card-feedback {
   margin-top: 1rem;
   width: 100%;
-  background-color: #faf9f9;
+  background-color: $cfourth;
 
   img {
     width: 100%;
@@ -216,7 +216,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 8px;
-  background: #FAF9F9;
+  background: $cfourth;
   padding: 8px 1rem;
   border: 1px solid rgb(235,235,235);
   border-radius: 8px;
