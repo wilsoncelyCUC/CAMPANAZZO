@@ -181,7 +181,7 @@
   margin-top: 1rem;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .card-home-campanazzo-myProfessions{
@@ -231,4 +231,71 @@
 .card-post-new-tell-us-more .card-post-new-tell-us-info {
   flex-grow: 1;
   padding: 0 24px;
+}
+
+// Card post
+
+.card-post {
+  background-color: $cwhite-cards;
+  margin: 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+  padding: 1rem 1rem;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+  }
+}
+
+.card-post-head {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+
+  i {
+    color: $csecond;
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    }
+  }
+
+.card-post-body{
+  display: flex;
+  justify-content: space-between;
+  p {
+    font-size: 0.8rem;
+  }
+}
+
+.card-post-body-right{
+  padding: 0.5rem 0;
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.card-post-body-left {
+  p {
+    text-align: center ;
+    color: $csecond;
+    padding-top: 0.5rem;
+
+    }
+  .product-img-div{
+    align-content: center;
+    margin-top: -0.5rem;
+  }
+}
+
+.card-post-button {
+//  margin: 1rem 0;
+  display: flex;
+  justify-content: space-around;
 }

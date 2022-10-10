@@ -10,6 +10,32 @@
 <%# components %>
 
 <div class="container">
+  <%# SECTION TO TEST CARD INTO THE PROD GRID%>
+  <div class="cards">
+    <div class="card-post">
+      <div class="card-post-head">
+        <h2>Task tittle</h2>
+      </div>
+      <div class="card-post-body">
+        <div class="card-post-body-right">
+          <p><i class="fa-solid fa-calendar-days"></i> Jueves 20 Octubre 2022</p>
+          <p><i class="fa-solid fa-clock"></i> 11:30 am - 12:00 pm</p>
+          <p><i class="fa-solid fa-car-side"></i> Auto requerido</p>
+        </div>
+        <div class="card-post-body-left">
+          <div class="product-img-div"><%= image_tag ("wilson_test.png"), class: "avatar-medium" %></div>
+          <p>By: <strong>Wilson C.</strong> </p>
+        </div>
+      </div>
+
+      <div class="card-post-button">
+        <%= link_to "Detalles", "#", class: "btn-post-action" %>
+        <%= link_to "Chat", "#", class: "btn-post-action" %>
+      </div>
+    </div>
+  </div>
+
+
   <div class="row">
     <%# product card %>
     <div class=" col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
