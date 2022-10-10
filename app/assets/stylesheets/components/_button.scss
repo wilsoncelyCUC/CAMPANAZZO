@@ -70,3 +70,20 @@
   background: $csecond;
   color: $cwhite;
 }
+
+
+// Button action - in cards
+
+.btn-post-action {
+  color: $csecond;
+  padding: 0.1rem;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  font-size: 24px;
+  border: 1px solid $csecond;
+  width: 100%;
+  text-align: center;
+  margin: 0 0.5rem;
+  border-radius: 16px;
+
+}
