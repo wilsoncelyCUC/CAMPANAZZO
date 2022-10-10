@@ -1,15 +1,15 @@
-<h1 align="center">Hi 👋, I'm Wilson CELY CEO of Campanazzo</h1>
+<h1 align="center">Hi 👋, Welcome Campanazzo dev page</h1>
 <h3 align="center">We want to create the remote control to manage the services of your home.</h3>
 
 - 🔭 I’m currently working on (https://www.campanazzo.com/)
 
 - 🌱 I’m currently learning **User flows, UX,**
 
-- :squirrel: Dev Wilson CELY [Full Stack Dev](https://github.com/wilsoncelyCUC)
+- :squirrel: Dev & CEO Wilson CELY [Full Stack Dev](https://github.com/wilsoncelyCUC)
 
 - 🤝 Dev Contributor Luc Siat [Full Stack Dev](https://github.com/Luc-Siat)
 
-- 👨‍💻 All of my projects are available at [https://github.com/wilsoncelyCUC](https://github.com/wilsoncelyCUC)
+- 👨‍💻 Promotial video [HERE](https://www.youtube.com/watch?v=SNGOeaRs6AU)
 
 - 📫 How to reach me **wectcorp@gmail.com**
 
