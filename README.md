@@ -5,7 +5,7 @@
 
 - 🌱 I’m currently learning **User flows, UX,**
 
-- :squirrel: Dev & CEO Wilson CELY [Full Stack Dev](https://github.com/wilsoncelyCUC)
+- :wolf: Dev & CEO Wilson CELY [Full Stack Dev](https://github.com/wilsoncelyCUC)
 
 - 🤝 Dev Contributor Luc Siat [Full Stack Dev](https://github.com/Luc-Siat)
 
