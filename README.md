@@ -5,9 +5,9 @@
 
 - 🌱 I’m currently learning **User flows, UX,**
 
-- :rabbit: Who is on board? [Full Stack Dev](https://github.com/wilsoncelyCUC)
+- :squirrel: Dev Wilson CELY [Full Stack Dev](https://github.com/wilsoncelyCUC)
 
-- 🤝 Contributor [Full Stack Dev](https://github.com/Luc-Siat)
+- 🤝 Dev Contributor Luc Siat [Full Stack Dev](https://github.com/Luc-Siat)
 
 - 👨‍💻 All of my projects are available at [https://github.com/wilsoncelyCUC](https://github.com/wilsoncelyCUC)
 
