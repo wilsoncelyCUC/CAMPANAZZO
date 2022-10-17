@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_02_085816) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_17_084656) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_085816) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "my_professions", force: :cascade do |t|
+    t.bigint "profession_id", null: false
+    t.bigint "profile_id", null: false
+    t.string "year"
+    t.integer "price_hour"
+    t.integer "price_day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "bio"
+    t.index ["profession_id"], name: "index_my_professions_on_profession_id"
+    t.index ["profile_id"], name: "index_my_professions_on_profile_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -87,16 +100,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_085816) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "profession_id"
-    t.index ["profession_id"], name: "index_profiles_on_profession_id"
+    t.string "vehicle"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "reservations", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "profile_id", null: false
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "start_date", precision: nil
+    t.datetime "end_date", precision: nil
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -118,9 +130,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_085816) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "my_professions", "professions"
+  add_foreign_key "my_professions", "profiles"
   add_foreign_key "posts", "professions"
   add_foreign_key "posts", "profiles"
-  add_foreign_key "profiles", "professions"
   add_foreign_key "profiles", "users"
   add_foreign_key "reservations", "posts"
   add_foreign_key "reservations", "profiles"

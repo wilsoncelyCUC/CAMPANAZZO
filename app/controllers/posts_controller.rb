@@ -27,10 +27,11 @@ class PostsController < ApplicationController
     profession = get_profession(session[:profession_name])
     @post.profession_id = profession ?  profession.id : nil
     @post.profile_id = @profile_customer.id
-    @post.profession_id = Profession.last.id
+    @post.profession_id = Profession.last.id #To be dealed with, later:
     @post.name = "Servicio de #{profession.name}"
     if @post.save
-      redirect_to posts_path
+      session[:post_id] = @post.id
+      redirect_to profiles_path
     else
       render :new
     end
@@ -53,7 +54,7 @@ class PostsController < ApplicationController
   private
 
   def get_profession(element)
-    #Temp Hard-code, if the profession isn't found then it return cleaning.
+    #Temp Hard-code, if the profession isn't found then it returns cleaning.
     #correction will be provided an autocomplete list_of_profession in the homepage bar
     Profession.find_by(name: element) ? Profession.find_by(name: element) : Profession.find_by(name: 'Limpieza')
   end

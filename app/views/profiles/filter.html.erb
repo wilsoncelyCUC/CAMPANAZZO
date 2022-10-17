@@ -1,13 +1,18 @@
-<%= simple_form_for :filter, url: profiles_path, method: "GET" do |f| %>
-  <div class="form-container">
-    <div class="inline-form">
-      <%= f.input :date,  collection: Profile::DATE, label: "Fecha", required: false %>
-      <%= f.input :hour, collection:  Profile::HOUR, label: "Fecha", required: false%>
-      <%= f.input :price%>
-      <%= f.input :type_super, collection: Profile::TYPE_SUPER, required: false %>
-    </div>
-    <div class="buttons-search-mc">
-      <%= f.submit class:"btn-flat"%>
-    </div>
+<div class="container">
+  <div class="mt-5">
+    <%= simple_form_for :filter, url: profiles_path, method: "GET" do |f| %>
+      <div class="form-container">
+        <div class="inline-form">
+          <%= f.input :date,  collection: Profile::DATE, label: "¿ Pa' cuando es el trabajo?", required: false %>
+          <%= f.input :hour, collection:  Profile::HOUR, label: "¿ A que horas", required: false%>
+          <%= f.input :price, collection: Profile::PRICE, label: "¿ Cuando quiere pagar ?", required: false %>
+          <%= f.input :type_super, collection: Profile::TYPE_PROFESSIONAL, required: false %>
+        </div>
+        <div class="buttons-search-mc">
+          <%= f.submit class:"btn-flat"%>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+
+</div>

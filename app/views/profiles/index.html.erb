@@ -11,9 +11,9 @@
     <% end %>
       <ul class="list-inline"    >
         <% link_date =  !date.blank? ? date : "En 7 Días" %>
-        <li><%= link_to "#{link_date}", profiles_filter_path, class:"btn-flat" %></li>
+        <li><%= link_to "#{link_date}", profiles_filter_path, class:"btn-ghost" %></li>
         <% link_hour =  !hour.blank? ? hour : "Hora Flexible"  %>
-        <li ><%= link_to "#{link_hour}",profiles_filter_path, class:"btn-flat" %></li>
+        <li ><%= link_to "#{link_hour}",profiles_filter_path, class:"btn-ghost" %></li>
         <% link_price = !price.blank? ? "#{price}$ " : "30k$ - 70k$" %>
         <li><%= link_to "#{link_price}",profiles_filter_path, class:"btn-flat" %></li>
         <li > <%= link_to "Más Filtros",profiles_filter_path, class:"btn-flat" %></li>
@@ -35,10 +35,10 @@
           <div class="card-campanazzo-info">
             <div class="card-campanazzo-details">
               <h2><strong><%=profile.name%> <%= profile.last_name %></strong></h2>
-              <h3>50.000$ / Hora</h3>
+              <h3> <%=profile.my_professions.where(profession_id: @profession.id).first.price_hour  %> COP por Hora</h3>
             </div>
-            <p><i class="fa-solid fa-list-check"></i> Plomero ( 200 Trabajos)</p>
-            <p><strong> (100 Recomendaciones)</strong></p>
+            <p><i class="fa-solid fa-list-check"></i> <%=@profession.name  %> ( <%= profile.posts.where(profession_id: @profession.id).count %> Trabajos)</p>
+            <p><strong> (<%= profile.reservations.count %> Recomendaciones)</strong></p>
             <div class="rating">
             <% start = profile.score.nil? ? 3 : profile.score.ceil %>
             <% start.times do |start| %>
@@ -48,14 +48,20 @@
             <i class="far fa-star"></i>
             <% end %>
             </div>
-            <p> <i class="fa-solid fa-truck"></i> Bicicleta</p>
+            <p> <i class="fa-solid fa-truck"></i> <%= profile.vehicle %></p>
           </div>
         </div>
         <div class="card-campanazzo-bottom">
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat aliquam suscipit, est quae quibusdam, nisi minima tempore cupiditate aspernatur vel omnis molestiae inventore ab earum, totam aut praesentium dolores? Ducimus.</p>
+          <p><%= truncate(profile.my_professions.where(profession_id: @profession.id).first.bio, length: 300) %></p>
         </div>
         <div class="card-campanazzo-footer">
-          <%= link_to "Seleccionar", "#", class: " btn-campanazzo" %>
+          <div class="btn-">
+            <%= simple_form_for [@post, @reservation] do |f| %>
+              <%= f.input  :profile_id, :input_html => { :value => profile.id }  %>
+              <%= f.input :start_date %>
+              <%= f.submit 'Seleccionar'  %>
+            <% end %>
+          </div>
         </div>
       </div>
         <% end %>
