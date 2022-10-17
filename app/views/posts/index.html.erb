@@ -23,7 +23,7 @@
           <div class="card-post-body-right">
             <p><i class="fa-solid fa-calendar-days"></i>  <%= post.date.strftime("%A %Y-%m-%d") %></p>
             <p><i class="fa-solid fa-clock"></i> 11:30 am - 12:00 pm</p>
-            <p><i class="fa-solid fa-car-side"></i>  Auto requerido</p>
+            <p><i class="fa-solid fa-car-side"> </i> <%= post.transport %></p>
           </div>
           <div class="card-post-body-left">
             <div class="product-img-div"><%= image_tag ("wilson_test.png"), class: "avatar-medium" %></div>
@@ -48,7 +48,7 @@
           <div class="card-post-body-right">
             <p><i class="fa-solid fa-calendar-days"></i> <%= post.date.strftime("%A %Y-%m-%d") %></p>
             <p><i class="fa-solid fa-clock"></i> 11:30 am - 12:00 pm</p>
-            <p><i class="fa-solid fa-car-side"></i>  Auto requerido</p>
+            <p><i class="fa-solid fa-car-side"></i>  <%= post.transport %></p>
           </div>
           <div class="card-post-body-left">
             <div class="product-img-div"><%= image_tag ("wilson_test.png"), class: "avatar-medium" %></div>
