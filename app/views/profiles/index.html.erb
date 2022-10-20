@@ -35,7 +35,7 @@
           <div class="card-campanazzo-info">
             <div class="card-campanazzo-details">
               <h2><strong><%=profile.name%> <%= profile.last_name %></strong></h2>
-              <h3> <%=profile.my_professions.where(profession_id: @profession.id).first.price_hour  %> COP por Hora</h3>
+              <p> <%=profile.my_professions.where(profession_id: @profession.id).first.price_hour  %> COP por Hora</p>
             </div>
             <p><i class="fa-solid fa-list-check"></i> <%=@profession.name  %> ( <%= profile.posts.where(profession_id: @profession.id).count %> Trabajos)</p>
             <p><strong> (<%= profile.reservations.count %> Recomendaciones)</strong></p>
@@ -54,12 +54,18 @@
         <div class="card-campanazzo-bottom">
           <p><%= truncate(profile.my_professions.where(profession_id: @profession.id).first.bio, length: 300) %></p>
         </div>
-        <div class="card-campanazzo-footer">
-          <div class="btn-">
+        <div class="card-campanazzo-footer" data-controller="booker">
+          <div class="button-selectionar" data-booker-target="select">
+            <%#= link_to "Seleccionar", "#", class: "btn-campanazzo" , remote: true, data: { controller: 'booker', action: 'ajax:click->booker#displayForm' } %>
+            <button class="btn-campanazzo" data-action="click->booker#displayForm">Seleccionar</button>
+
+          </div>
+          <div class="d-none" data-booker-target="calendar">
             <%= simple_form_for [@post, @reservation] do |f| %>
-              <%= f.input  :profile_id, :input_html => { :value => profile.id }  %>
+              <%= f.hidden_field  :profile_id, :value => profile.id   %>
               <%= f.input :start_date %>
-              <%= f.submit 'Seleccionar'  %>
+
+              <%= f.submit 'Confirmar', class: 'btn-campanazzo' %>
             <% end %>
           </div>
         </div>
