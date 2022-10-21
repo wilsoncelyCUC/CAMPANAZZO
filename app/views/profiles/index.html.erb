@@ -61,7 +61,7 @@
           <div class="d-none" data-booker-target="calendar">
             <%= simple_form_for [@post, @reservation] do |f| %>
               <%= f.hidden_field  :profile_id, :value => profile.id   %>
-              <%= f.input :start_date, as: :date, html5: true %>
+              <%= f.input :start_date, as: :datetime, html5: true %>
 
               <%= f.submit 'Confirmar', class: 'btn-campanazzo' %>
             <% end %>
