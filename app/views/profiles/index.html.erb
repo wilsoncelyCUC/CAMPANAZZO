@@ -56,14 +56,12 @@
         </div>
         <div class="card-campanazzo-footer" data-controller="booker">
           <div class="button-selectionar" data-booker-target="select">
-            <%#= link_to "Seleccionar", "#", class: "btn-campanazzo" , remote: true, data: { controller: 'booker', action: 'ajax:click->booker#displayForm' } %>
             <button class="btn-campanazzo" data-action="click->booker#displayForm">Seleccionar</button>
-
           </div>
           <div class="d-none" data-booker-target="calendar">
             <%= simple_form_for [@post, @reservation] do |f| %>
               <%= f.hidden_field  :profile_id, :value => profile.id   %>
-              <%= f.input :start_date %>
+              <%= f.input :start_date, as: :date, html5: true %>
 
               <%= f.submit 'Confirmar', class: 'btn-campanazzo' %>
             <% end %>
