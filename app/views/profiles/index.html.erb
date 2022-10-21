@@ -29,13 +29,15 @@
       <div class="card-campanazzo">
         <div class="card-campanazzo-top">
           <div class="card-campanazzo-picture">
-            <i class="card-like fa-brands fa-pagelines"></i>
+            <%if (profile.type_professional == 'Elite')  %>
+              <i class="card-like fa-brands fa-pagelines"></i>
+             <% end %>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
           </div>
           <div class="card-campanazzo-info">
             <div class="card-campanazzo-details">
               <h2><strong><%=profile.name%> <%= profile.last_name %></strong></h2>
-              <p> <%=profile.my_professions.where(profession_id: @profession.id).first.price_hour  %> COP por Hora</p>
+              <p> <%=number_to_currency(profile.my_professions.where(profession_id: @profession.id).first.price_hour, {unit: '$', precision: 0, format: "%n %u"} )%> / <%= Profession.find_by(name: session[:profession_name]).unit %> </p>
             </div>
             <p><i class="fa-solid fa-list-check"></i> <%=@profession.name  %> ( <%= profile.posts.where(profession_id: @profession.id).count %> Trabajos)</p>
             <p><strong> (<%= profile.reservations.count %> Recomendaciones)</strong></p>
