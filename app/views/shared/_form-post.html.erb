@@ -1,10 +1,9 @@
 <%= simple_form_for(@post) do |f| %>
-    <%= f.input :address %>
-    <%= f.input :date %>
-    <%= f.input :available_48, collection: Post::AVAILABILITY_48%>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :quick_assessment, collection: Post::ASSESSMENT%>
-    <%= f.input :transport, collection: Post::TRANSPORT%>
+    <%= f.input :address, label: '¿ Cual es tu dirección ?' %>
+    <%= f.input :available_48, label: '¿ Es urgente ?', collection: Post::AVAILABILITY_48%>
+    <%= f.input :photo, label: 'Comparte una foto (1 foto vale más que 1000 palabras)',  as: :file %>
+    <%= f.input :quick_assessment, label: '¿Podrías estimar la complejidad?', collection: Post::ASSESSMENT%>
+    <%= f.input :transport,label: '¿ Se require vehiculo ?',  collection: Post::TRANSPORT%>
     <div class="buttons">
       <%= f.submit class:"btn-flat" %>
       <button class= "create-gradient" href="#">

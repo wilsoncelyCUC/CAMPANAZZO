@@ -4,14 +4,9 @@ class PostsController < ApplicationController
   def index
     find_profile_customer
     @posts = Post.all
-    @my_posts_current = Post.where('date >= ? AND profile_id = ?' , DateTime.now,  @profile_customer.id )
+    @my_posts_current = Post.joins(:reservations).where( profile_id:  @profile_customer.id ).where( "reservations.start_date >= ?", Date.today).references(:reservations)
+    #@my_posts_current = Post.where('date >= ? AND profile_id = ?' , DateTime.now,  @profile_customer.id )
     @my_posts_past = Post.where('date < ? AND profile_id = ?' , DateTime.now,  @profile_customer.id )
-
-    def filter_by_type
-      @posts = Post.where(state: params[:type_filter])
-      render partial: 'shared/cards-posts', locals: { posts: posts }
-    end
-
 
   end
 
@@ -25,9 +20,8 @@ class PostsController < ApplicationController
     find_profile_customer
     @post= Post.new(post_params)
     profession = get_profession(session[:profession_name])
-    @post.profession_id = profession ?  profession.id : nil
+    set_profession(profession, @post)
     @post.profile_id = @profile_customer.id
-    @post.profession_id = Profession.last.id #To be dealed with, later:
     @post.name = "Servicio de #{profession.name}"
     if @post.save
       session[:post_id] = @post.id
@@ -57,6 +51,14 @@ class PostsController < ApplicationController
     #Temp Hard-code, if the profession isn't found then it returns cleaning.
     #correction will be provided an autocomplete list_of_profession in the homepage bar
     Profession.find_by(name: element) ? Profession.find_by(name: element) : Profession.find_by(name: 'Limpieza')
+  end
+
+  def set_profession(profession, post)
+    if !profession.nil?
+     post.profession_id = profession ? profession.id : nil
+    else
+      post.profession_id = Profession.last.id #To be dealed with, later:
+    end
   end
 
   def find_post
