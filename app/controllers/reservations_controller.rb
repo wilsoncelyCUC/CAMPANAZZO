@@ -33,6 +33,7 @@ before_action :find_post
   end
 
   def destroy
+
   end
 
   private
