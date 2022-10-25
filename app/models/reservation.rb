@@ -2,7 +2,7 @@ class Reservation < ApplicationRecord
   belongs_to :post
   belongs_to :profile
 
-  validates :start_date, :end_date, presence: true#, availability: true
+  validates :start_date, :end_date, presence: true, availability: true
   validate :end_date_after_start_date
 
   private
