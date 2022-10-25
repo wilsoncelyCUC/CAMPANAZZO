@@ -49,7 +49,7 @@ class ProfilesController < ApplicationController
       end
      @profiles =  profiles_for_session
     end
-    @profiles = profiles_for_session
+    @profiles = profiles_for_session.nil? ? [] : profiles_for_session
   end
 
 

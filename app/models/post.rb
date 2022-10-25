@@ -3,14 +3,14 @@ class Post < ApplicationRecord
   belongs_to :customer, class_name: 'Profile', foreign_key: "profile_id"
   has_one_attached :photo
   belongs_to :profession
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
 
   #for Post quick assessment
   hard = 1
   moderate = 2
   difficult = 3
 
-  ASSESSMENT = ["#{hard} horas", "#{moderate} horas", "#{difficult} horas"]
+  ASSESSMENT = ["#{hard} hora", "#{moderate} horas", "#{difficult} horas"]
   STATE = ['Open','Closed']
   VALIDATED = ['Si', 'No']
   TRANSPORT = ['Small car', 'Small truck', 'big truck', 'Not required']

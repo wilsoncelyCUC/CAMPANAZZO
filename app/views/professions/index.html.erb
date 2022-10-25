@@ -11,19 +11,21 @@
 
   </div>
 
-  <h2>Profession list</h2>
-
-  <% @professions.each do |profession| %>
-  <div class="card-product">
-    <img src= <%=profession.url_photo %> />
-    <div class="card-product-infos">
-      <h2><%= profession.name %></h2>
-      <h2>Recomended price <strong><%= profession.recommended_price %></strong></h2>
-      <p>currency: <%= profession.currency %></p>
-    </div>
+  <div class="mb-3 mt-3">
+    <h1>Current Professions</h1>
   </div>
-  <%= link_to "edit profile", edit_profession_path(profession)%>
 
-  <% end %>
+  <div class="cards-professions">
+    <% @professions.each do |profession| %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= profession.name %></h5>
+        <p class="card-text">Recommended price <%= profession.recommended_price %></p>
+        <p class="card-text">Number of worker <%= Profile.joins(:my_professions).where(my_professions:{profession_id: profession.id}).count %></p>
+        <%= link_to 'Edit', edit_profession_path(profession) %>
+      </div>
+    </div>
+    <% end %>
+  </div>
 
 </div>

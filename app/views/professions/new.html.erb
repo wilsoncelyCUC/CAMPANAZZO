@@ -1,7 +1,19 @@
-<h1>New Profession</h1>
-<p> RESTRICTED ACCESS</p>
+<div class="container">
 
-<%= render "shared/form-profession", profession: @profession %>
-<ul class="nav">
-  <li><%= link_to "Back", root_path, :class => "nav-item px-1"%></li>
-</ul>
+  <div class="mb-3 mt-3">
+    <h1>New Profession</h1>
+    <p class="text-danger"> RESTRICTED ACCESS</p>
+  </div>
+
+  <%= render "shared/form-profession", profession: @profession %>
+  <ul class="nav">
+    <li><%= link_to "Back", professions_path, :class => "nav-item px-1"%></li>
+  </ul>
+
+  <div class="mb-3 mt-3">
+    <h1>Current Professions</h1>
+  </div>
+
+
+
+</div>

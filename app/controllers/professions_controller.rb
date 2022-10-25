@@ -7,6 +7,8 @@ before_action :find_profession, only: [:edit, :update, :destroy]
 
   def new
     @profession = Profession.new
+    @professions = Profession.all
+
   end
 
   def create

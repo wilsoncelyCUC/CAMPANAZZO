@@ -1,5 +1,5 @@
 <%= simple_form_for(@profession) do |f| %>
-    <%= f.input :name %>
+    <%= f.input :name, collection: Profession::PROFESSION %>
     <%= f.input :recommended_price %>
     <%= f.input :unit, collection: Profession::UNIT%>
     <%= f.input :currency, collection: Profession::CURRENCY%>
