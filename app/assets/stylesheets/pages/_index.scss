@@ -82,3 +82,33 @@ h2,h3,h4,h5{
     grid-template-columns: 1fr 1fr ;
   }
 }
+
+
+// Grid for profession cards
+
+.cards-professions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards-professions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards-professions {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards-professions {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

@@ -32,7 +32,11 @@
             <%if (profile.type_professional == 'Elite')  %>
               <i class="card-like fa-brands fa-pagelines"></i>
              <% end %>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
+            <% if profile.photo.key %>
+              <%= cl_image_tag profile.photo.key, class: "avatar-large-musician" %>
+            <% else %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
+              <%  end %>
           </div>
           <div class="card-campanazzo-info">
             <div class="card-campanazzo-details">

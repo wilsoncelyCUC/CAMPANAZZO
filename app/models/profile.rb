@@ -11,6 +11,7 @@ class Profile < ApplicationRecord
   HOUR=["Mañana (8:00 - 12:00)", "Tarde (12:00 - 17:00)", "Noche (17:00 - 21:00)"]
   TYPE_PROFESSIONAL = ["Elite", "Bueno Bonito y Barato"]
   PRICE = ['20 y 50 kCOP', '51 y 70 kCOP', '+ de 70 kCOP' ]
+  VEHICLE = ['Camion ligero', 'Van', 'Camion grande', 'No']
 
   #PG Search
   include PgSearch::Model

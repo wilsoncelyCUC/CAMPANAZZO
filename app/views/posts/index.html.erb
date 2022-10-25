@@ -29,9 +29,14 @@
             </div>
             <div class="card-post-body-left">
               <div class="product-img-div">
-                <%= image_tag ("wilson_test.png"), class: "avatar-medium" %>
+                <% profile = Profile.find( post.reservations.first.profile_id) %>
+                <% if profile.photo.key %>
+                  <%= cl_image_tag profile.photo.key, class: "avatar-medium" %>
+                <% else %>
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-medium" %>
+                <%  end %>
               </div>
-              <p>By: <strong><%= session[:profile_worker_id].nil? ?  'Wilson C.' : Profile.find(session[:profile_worker_id]).name %> <%= Profile.find(session[:profile_worker_id]).last_name[0].capitalize %>. </strong> </p>
+              <p>By: <strong><%= profile.nil? ?  'Wilson C.' : profile.name %> <%= profile.last_name[0].capitalize %>. </strong> </p>
             </div>
               <% else %>
             <div class="card-post-body-right">
@@ -74,9 +79,14 @@
             </div>
             <div class="card-post-body-left">
               <div class="product-img-div">
-                <%= image_tag ("wilson_test.png"), class: "avatar-medium" %>
+                <% profile = Profile.find( post.reservations.first.profile_id) %>
+                <% if profile.photo.key %>
+                  <%= cl_image_tag profile.photo.key, class: "avatar-medium" %>
+                <% else %>
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-medium" %>
+                <%  end %>
               </div>
-              <p>By: <strong><%= session[:profile_worker_id].nil? ?  'Wilson C.' : Profile.find(session[:profile_worker_id]).name %> <%= Profile.find(session[:profile_worker_id]).last_name[0].capitalize %>. %> </strong> </p>
+              <p>By: <strong><%= profile.nil? ?  'Wilson C.' : profile.name %> <%= profile.last_name[0].capitalize %>. %> </strong> </p>
             </div>
               <% else %>
             <div class="card-post-body-right">
@@ -88,7 +98,7 @@
               <div class="product-img-div">
                 <%= image_tag ("wilson_test.png"), class: "avatar-medium" %>
               </div>
-              <p>By: <strong>Wilson C.</strong> </p>
+              <p>By: <strong><%= profile.nil? ?  'Wilson C.' : profile.name %> <%= profile.last_name[0].capitalize %>. %> </strong> </p>
             </div>
               <% end %>
           </div>
