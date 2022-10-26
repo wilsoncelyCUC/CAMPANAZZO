@@ -1,0 +1,5 @@
+ <%= simple_form_for [@post, @reservation] do |f| %>
+   <%= f.hidden_field  :profile_id, :value => profile.id   %>
+   <%= f.input :start_date,required: true,  as: :datetime, html5: tr
+   <%= f.submit 'Confirmar', class: 'btn-campanazzo' %>
+  <% end %>

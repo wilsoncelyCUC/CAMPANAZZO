@@ -48,12 +48,14 @@
 
 .btn-campanazzo {
   color: $cwhite;
-  padding: 8px 24px;
+  padding: 0.3rem;
   border-radius: 16px;
   background: $cfirst;
   transition: background 0.3s ease;
   text-decoration: none;
   font-size: 36px;
+  text-align: center;
+  width: 100%;
 }
 
 .btn-campanazzo:hover {
@@ -77,7 +79,7 @@
 }
 
 
-// Button action - in cards
+// Button action into the cards of: post/index
 
 .btn-post-action {
   color: $csecond;
@@ -91,4 +93,27 @@
   margin: 0 0.5rem;
   border-radius: 16px;
 
+}
+
+// label skills in: profile/show
+
+.label-skills {
+  color: $csecond;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  font-size: .75rem;
+  border: 1px solid $csecond;
+  text-align: center;
+  margin: 0 0.5rem;
+  vertical-align: bottom;
+  display: inline-block;
+
+
+  //border-radius: 16px;
+}
+
+.btn-rounded {
+  border-radius: .5rem;
 }

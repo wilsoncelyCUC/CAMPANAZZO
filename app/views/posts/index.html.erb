@@ -31,7 +31,7 @@
               <div class="product-img-div">
                 <% profile = Profile.find( post.reservations.first.profile_id) %>
                 <% if profile.photo.key %>
-                  <%= cl_image_tag profile.photo.key, class: "avatar-medium" %>
+                  <%= link_to cl_image_tag(profile.photo.key, class: "avatar-medium"), profile_path(profile) %>
                 <% else %>
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-medium" %>
                 <%  end %>
@@ -53,7 +53,7 @@
               <% end %>
           </div>
           <div class="card-post-button">
-            <%= link_to "Detalles", "#", class: "btn-post-action" %>
+            <%= link_to "Detalles", post_path(post), class: "btn-post-action" %>
             <%= link_to "Chat", "#", class: "btn-post-action" %>
           </div>
         </div>
@@ -81,7 +81,7 @@
               <div class="product-img-div">
                 <% profile = Profile.find( post.reservations.first.profile_id) %>
                 <% if profile.photo.key %>
-                  <%= cl_image_tag profile.photo.key, class: "avatar-medium" %>
+                  <%= link_to cl_image_tag(profile.photo.key, class: "avatar-medium"), profile_path(profile) %>
                 <% else %>
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-medium" %>
                 <%  end %>
@@ -103,7 +103,7 @@
               <% end %>
           </div>
           <div class="card-post-button">
-            <%= link_to "Detalles", "#", class: "btn-post-action" %>
+            <%= link_to "Detalles", post_path(post), class: "btn-post-action" %>
             <%= link_to "Chat", "#", class: "btn-post-action" %>
           </div>
         </div>

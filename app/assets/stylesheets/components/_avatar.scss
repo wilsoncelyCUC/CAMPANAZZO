@@ -3,7 +3,7 @@
   border-radius: 50%;
 }
 .avatar-large {
-  width: 100px;
+  width: 200px;
   border-radius: 50%;
 }
 
@@ -22,4 +22,34 @@
   border-radius: 0px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
+}
+
+.margin-top-negative {
+  margin-top: -7rem;
+  justify-content: center;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10rem;
+}
+
+@media (min-width: 768px) {
+  .center {
+    width: 17rem;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .center {
+    width: 17rem;
+  }
+}
+
+.avatar-campanazzo-picture {
+  height: 180px;
+  border-radius: 4px 0 0 0;
 }

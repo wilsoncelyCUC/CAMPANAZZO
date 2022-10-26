@@ -13,8 +13,12 @@ before_action :find_post
     if @post
       @reservation.post = @post
       end_hour = @post.quick_assessment[0].nil? ? 1 : @post.quick_assessment[0].to_i
-      @reservation.end_date = (@reservation.start_date + end_hour.hour).to_datetime
-      @reservation.start_date = @reservation.start_date.to_datetime
+      if !@reservation.start_date.nil?
+        @reservation.end_date = (@reservation.start_date + end_hour.hour).to_datetime
+        @reservation.start_date = @reservation.start_date.to_datetime #validator only works with datetime and not with TimeToZone
+      else
+        redirect_to profiles_path
+      end
       if @reservation.save!
         session[:profile_worker_id] = @reservation.profile.id
         redirect_to posts_path

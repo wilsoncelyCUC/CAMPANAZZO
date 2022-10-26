@@ -30,3 +30,37 @@
   font-weight: bold;
   text-align: center;
 }
+
+
+// show
+
+.banner-show {
+  background-color: $cfirst;
+  padding-bottom: 100px;
+  text-align: center;
+
+  p , i {
+    font-size: 24px;
+    color: $cwhite;
+    opacity: .7;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    text-align: center;
+
+  }
+
+  h1 {
+    font-size: 46px;
+    color: $cwhite;
+    //opacity: .7;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 24px;
+    color: $cwhite;
+    opacity: .7;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    text-align: center;
+  }
+}
