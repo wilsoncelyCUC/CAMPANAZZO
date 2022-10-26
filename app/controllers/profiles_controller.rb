@@ -52,6 +52,21 @@ class ProfilesController < ApplicationController
     @profiles = profiles_for_session.nil? ? [] : profiles_for_session
   end
 
+  def show
+    find_post
+    @reservation = Reservation.new
+
+    @profession = get_profession(session[:profession_name])
+    @my_profession = (MyProfession.where(profile_id: @profile.id).where(profession_id: @profession.id)).first
+
+    @skills = []
+
+    @profile.professions.each do |profession|
+      @skills << profession.name
+    end
+
+
+  end
 
   def filter
   end
@@ -69,4 +84,5 @@ class ProfilesController < ApplicationController
   def find_post
     @post = Post.find(session[:post_id])
   end
+
 end
