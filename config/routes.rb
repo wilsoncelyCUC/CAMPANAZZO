@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   end
   resources :posts do
     resources :reservations, only: [:new, :create, :index]
+    resources :review, only: [:new, :create, :edit, :update, :destroy]
+
   end
   resources :reservations, only: [:update, :destroy]
 

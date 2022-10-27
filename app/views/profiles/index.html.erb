@@ -59,7 +59,7 @@
         <div class="card-campanazzo-bottom">
           <p><%= truncate(profile.my_professions.where(profession_id: @profession.id).first.bio, length: 300) %></p>
         </div>
-        <div class="card-campanazzo-footer" data-controller="booker">
+        <div class="" data-controller="booker">
           <div class="button-selectionar" data-booker-target="select">
             <button class="btn-campanazzo" data-action="click->booker#displayForm">Seleccionar</button>
           </div>

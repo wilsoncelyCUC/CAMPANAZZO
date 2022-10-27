@@ -44,7 +44,7 @@
           <div class="product-img-div"><%= image_tag ("wilson_test.png"), class: "avatar-large" %></div>
           <div class="product-header-content">
             <h1>Wilson C.</h1>
-            <p class="red-text"><i class="bold fa-solid fa-star"></i> 99% positive reviews <br><i class="fa-regular fa-circle-check bold"></i> 1 delivery task</h3>
+            <p class="red-text"><i class="bold fa-solid fa-star"></i> 99% positive card-reviews <br><i class="fa-regular fa-circle-check bold"></i> 1 delivery task</h3>
 
           </div>
         </div>
@@ -89,20 +89,152 @@
 
     <%# job-card %>
     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
-      <div class="review-card">
-        <div class="review-header">
-          <div class="review-header">
-            <div class="review-content"></div>
-            <div class="review-date"></div>
+      <div class="card-review-card">
+        <div class="card-review-header">
+          <div class="card-review-header">
+            <div class="card-review-content"></div>
+            <div class="card-review-date"></div>
           </div>
         </div>
-        <div class="review-description"></div>
-        <div class="review-rating"></div>
+        <div class="card-review-description"></div>
+        <div class="card-review-rating"></div>
       </div>
     </div>
   </div>
 
 </div>
+
+
+<%# card card-review %>
+
+<div class="container">
+  <div class="cards">
+
+    <div class="card-review">
+      <div class="card-review-top">
+        <div class="card-review-top-customer">
+          <h5>Mario luis L.</h5>
+        </div>
+        <div class="card-review-top-date">
+          <p>9th January</p>
+        </div>
+        <div class="card-review-top-actions d-none">
+          <a href="#"> <i class="fas fa-pencil-alt"></i></a>
+          <a href="#"> <i class="far fa-trash-alt"></i></a>
+        </div>
+      </div>
+      <div class="card-review-body">
+        <div class="card-review-body-profession">
+
+        </div>
+        <div class="card-review-body-description">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales sapien nec nisl condimentum malesuada. Suspendisse volutpat ultricies diam eget sodales. Suspendisse ac lectus laoreet nibh tempor feugiat in non lacus.</p>
+        </div>
+        <div class="card-review-rating">
+          <% start = 3 %>
+           <% start.times do |start| %>
+             <i class="fas fa-star"></i>
+           <% end %>
+          <% (5-start).times do |start| %>
+           <i class="far fa-star"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-review">
+      <div class="card-review-top">
+        <div class="card-review-top-customer">
+          <h5>Mario luis L.</h5>
+        </div>
+        <div class="card-review-top-date">
+          <p>9th January</p>
+        </div>
+        <div class="card-review-top-actions d-none">
+          <a href="#"> <i class="fas fa-pencil-alt"></i></a>
+          <a href="#"> <i class="far fa-trash-alt"></i></a>
+        </div>
+      </div>
+      <div class="card-review-body">
+        <div class="card-review-body-profession">
+
+        </div>
+        <div class="card-review-body-description">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales sapien nec nisl condimentum malesuada. Suspendisse volutpat ultricies diam eget sodales. Suspendisse ac lectus laoreet nibh tempor feugiat in non lacus.</p>
+        </div>
+        <div class="card-review-rating">
+          <% start = 3 %>
+           <% start.times do |start| %>
+             <i class="fas fa-star"></i>
+           <% end %>
+          <% (5-start).times do |start| %>
+           <i class="far fa-star"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-review">
+      <div class="card-review-top">
+        <div class="card-review-top-customer">
+          <h5>Mario luis L.</h5>
+        </div>
+        <div class="card-review-top-date">
+          <p>9th January</p>
+        </div>
+        <div class="card-review-top-actions">
+          <a href="#"> <i class="fas fa-pencil-alt"></i></a>
+          <a href="#"> <i class="far fa-trash-alt"></i></a>
+        </div>
+      </div>
+      <div class="card-review-body">
+        <div class="card-review-body-profession">
+
+        </div>
+        <div class="card-review-body-description">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales sapien nec nisl condimentum malesuada. Suspendisse volutpat ultricies diam eget sodales. Suspendisse ac lectus laoreet nibh tempor feugiat in non lacus.</p>
+        </div>
+        <div class="card-review-rating">
+          <% start = 3 %>
+           <% start.times do |start| %>
+             <i class="fas fa-star"></i>
+           <% end %>
+          <% (5-start).times do |start| %>
+           <i class="far fa-star"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+   <div class="cards">
+    <div class="card-post">
+      <div class="card-post-head">
+        <h2>Task tittle</h2>
+      </div>
+      <div class="card-post-body">
+        <div class="card-post-body-right">
+          <p><i class="fa-solid fa-calendar-days"></i> Jueves 20 Octubre 2022</p>
+          <p><i class="fa-solid fa-clock"></i> 11:30 am - 12:00 pm</p>
+          <p><i class="fa-solid fa-car-side"></i> Auto requerido</p>
+        </div>
+        <div class="card-post-body-left">
+          <div class="product-img-div"><%= image_tag ("wilson_test.png"), class: "avatar-medium" %></div>
+          <p>By: <strong>Wilson C.</strong> </p>
+        </div>
+      </div>
+
+      <div class="card-post-button">
+        <%= link_to "Detalles", "#", class: "btn-post-action" %>
+        <%= link_to "Chat", "#", class: "btn-post-action" %>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <%# navbar %>
 <div class="navbar-container">

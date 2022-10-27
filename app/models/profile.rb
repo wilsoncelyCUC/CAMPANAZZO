@@ -5,6 +5,7 @@ class Profile < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :my_professions, dependent: :destroy
   has_many :professions, through: :my_professions
+  has_many :reviews, dependent: :destroy
 
   #Filter
   TYPE_PROFILE = ['Customer', 'Professional']

@@ -54,16 +54,18 @@ class ProfilesController < ApplicationController
 
   def show
     find_post
+
     @reservation = Reservation.new
 
     @profession = get_profession(session[:profession_name])
-    @my_profession = (MyProfession.where(profile_id: @profile.id).where(profession_id: @profession.id)).first
+    @my_profession = (MyProfession.where(profile_id: @profile_worker.id).where(profession_id: @profession.id)).first
 
     @skills = []
 
-    @profile.professions.each do |profession|
+    @profile_worker.professions.each do |profession|
       @skills << profession.name
     end
+    @reviews = Review.where(profile_id: @profile_worker.id)
 
 
   end
@@ -74,7 +76,7 @@ class ProfilesController < ApplicationController
   private
 
   def find_profile
-    @profile = Profile.find(params[:id])
+    @profile_worker = Profile.find(params[:id])
   end
 
   def profile_params
@@ -84,5 +86,7 @@ class ProfilesController < ApplicationController
   def find_post
     @post = Post.find(session[:post_id])
   end
+
+
 
 end
