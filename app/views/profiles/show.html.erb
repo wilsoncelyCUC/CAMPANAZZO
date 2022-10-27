@@ -59,7 +59,12 @@
               <p><%= review.created_at.strftime("%m/%d/%Y") %></p>
               <p><%#= review.created_at.strftime("%A %b %d") %></p>
             </div>
-            <div class="card-review-top-actions d-none">
+            <% if @profile_worker == @profile_connected %>
+              <% displayer = '' %>
+              <% else %>
+              <% displayer = 'd-none' %>
+            <% end %>
+            <div class="card-review-top-actions <%= displayer%> ">
               <a href="#"> <i class="fas fa-pencil-alt"></i></a>
               <a href="#"> <i class="far fa-trash-alt"></i></a>
             </div>

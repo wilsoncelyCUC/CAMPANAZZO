@@ -27,6 +27,7 @@ class ReviewsController < ApplicationController
   end
 
   def delete
+
   end
 
   private

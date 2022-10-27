@@ -53,7 +53,12 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    find_post
+    get_profile
+    if session_empty?
+      find_post
+    else
+      @post = Post.first # HARD CODED UGLY , just to work on design show-worker from its own session
+    end
 
     @reservation = Reservation.new
 
@@ -70,6 +75,11 @@ class ProfilesController < ApplicationController
 
   end
 
+  def destroy
+    find_profile
+    find_review(@profile_worker, @post )
+  end
+
   def filter
   end
 
@@ -77,6 +87,10 @@ class ProfilesController < ApplicationController
 
   def find_profile
     @profile_worker = Profile.find(params[:id])
+  end
+
+  def find_review(profile_worker, post )
+    @review = profile_worker.reviews.where(post_id: post)
   end
 
   def profile_params
@@ -87,6 +101,9 @@ class ProfilesController < ApplicationController
     @post = Post.find(session[:post_id])
   end
 
+  def session_empty?
+    !session[:post_id].nil?
+  end
 
 
 end
