@@ -18,7 +18,7 @@
     <% if session[:flow_basic] == 'new' && session[:post_id] =! nil%>
     <%= render "shared/form-post-basic", post: @post %>
     <% else %>
-      <%= render "shared/form-post-profile  ", post: @post %>
+      <%= render "shared/form-post-profile", post: @post %>
     <% end %>
 
 
