@@ -9,14 +9,14 @@
       <% price = params[:filter][:price]%>
       <% type_super = params[:filter][:type_super]%>
     <% end %>
-      <ul class="list-inline"    >
+      <ul class="mt-3 align-content-start d-flex flex-nowrap list-unstyled"    >
         <% link_date =  !date.blank? ? date : "En 7 Días" %>
-        <li><%= link_to "#{link_date}", profiles_filter_path, class:"btn-ghost" %></li>
+        <li><%= link_to "#{link_date}", profiles_filter_path, class:"label-skills mb-2 btn-rounded mx-1" %></li>
         <% link_hour =  !hour.blank? ? hour : "Hora Flexible"  %>
-        <li ><%= link_to "#{link_hour}",profiles_filter_path, class:"btn-ghost" %></li>
+        <li ><%= link_to "#{link_hour}",profiles_filter_path, class:"label-skills mb-2 btn-rounded mx-1" %></li>
         <% link_price = !price.blank? ? "#{price}$ " : "30k$ - 70k$" %>
-        <li><%= link_to "#{link_price}",profiles_filter_path, class:"btn-flat" %></li>
-        <li > <%= link_to "Más Filtros",profiles_filter_path, class:"btn-flat" %></li>
+        <li><%= link_to "#{link_price}",profiles_filter_path, class:"label-skills mb-2 btn-rounded mx-1" %></li>
+        <li > <%= link_to "Más Filtros",profiles_filter_path, class:"label-skills mb-2 btn-rounded mx-1" %></li>
       </ul>
     </div>
   </div>
