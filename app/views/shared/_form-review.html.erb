@@ -1,0 +1,7 @@
+<div class="" data-controller="start-rating">
+      <%= simple_form_for([@post, @review]) do |f| %>
+        <%= f.input :description %>
+        <%= f.input :score, collection: (1..5).to_a, label: "Evalua la experiencia", input_html: {data: {controller: "star-rating", action: "click->form-submit#submit" }} %>
+        <%= f.submit "Envia tu evaluación" , class: "" %>
+      <% end %>
+</div>

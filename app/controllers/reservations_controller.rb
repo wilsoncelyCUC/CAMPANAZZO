@@ -20,10 +20,11 @@ before_action :find_post
         redirect_to profiles_path
       end
       if @reservation.save!
-        session[:profile_worker_id] = @reservation.profile.id
+        session[:post_id] = nil
+        session[:flow_basic] = 'terminated'
         redirect_to posts_path
       else
-        render :profiles_path
+        render :new
       end
     else
       render :profiles_path
@@ -43,7 +44,7 @@ before_action :find_post
   private
 
   def find_post
-    @post = Post.find(session[:post_id])
+     session[:post_id].nil? ? nil : @post = Post.find(session[:post_id])
   end
 
   def post_params

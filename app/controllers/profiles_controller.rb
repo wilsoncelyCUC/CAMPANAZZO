@@ -2,16 +2,20 @@ class ProfilesController < ApplicationController
   before_action :find_profile, only: [:show, :edit, :update, :destroy]
 
   def index
-    #Feature:  Button SELECTIONAR
-    find_post
-    @reservation = Reservation.new
+    if session[:profession_name]
+      #Feature:  Button SELECTIONAR
+      find_post
+      @reservation = Reservation.new
+      #Feature: filter bar =>
+      #1) Filter out profiles by a job category wanted by the customer (stored in session[:profession_name])
+      #a. find the profession_ID of the profession wanted by the user
+      @profession = session[:profession_name].nil? ? '' : Profession.find_by(name: session[:profession_name])
+      #b. Find profile having the profession_ID wanted
+      profiles_for_session = @profession.nil? ? Profile.all :  Profile.joins(:my_professions).where(my_professions: {profession_id: @profession.id})
+    else
+      redirect_to root_path
+    end
 
-    #Feature: filter bar =>
-    #1) Filter out profiles by a job category wanted by the customer (stored in session[:profession_name])
-    #a. find the profession_ID of the profession wanted by the user
-    @profession = Profession.find_by(name: session[:profession_name])
-    #b. Find profile having the profession_ID wanted
-    profiles_for_session = Profile.joins(:my_professions).where(my_professions: {profession_id: @profession.id})
     #2) Enable filter bar. element: Type, Date, Hour, Price
     if params[:filter].present?
       # type, (string)-> Search with scope
@@ -53,19 +57,27 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    find_post
-    @reservation = Reservation.new
-
-    @profession = get_profession(session[:profession_name])
-    @my_profession = (MyProfession.where(profile_id: @profile.id).where(profession_id: @profession.id)).first
-
-    @skills = []
-
-    @profile.professions.each do |profession|
-      @skills << profession.name
+    get_profile
+    if session_post_not_empty?
+      find_post
+      @profession = get_profession(session[:profession_name])
+      @my_profession = (MyProfession.where(profile_id: @profile_worker.id).where(profession_id: @profession.id)).first
+    else
+      @post = Post.new
     end
 
+    @reservation = Reservation.new
 
+    @skills = []
+    @profile_worker.professions.each do |profession|
+      @skills << profession.name
+    end
+    @reviews = Review.where(profile_id: @profile_worker.id)
+  end
+
+  def destroy
+    find_profile
+    find_review(@profile_worker, @post )
   end
 
   def filter
@@ -74,7 +86,11 @@ class ProfilesController < ApplicationController
   private
 
   def find_profile
-    @profile = Profile.find(params[:id])
+    @profile_worker = Profile.find(params[:id])
+  end
+
+  def find_review(profile_worker, post )
+    @review = profile_worker.reviews.where(post_id: post)
   end
 
   def profile_params
@@ -84,5 +100,10 @@ class ProfilesController < ApplicationController
   def find_post
     @post = Post.find(session[:post_id])
   end
+
+  def session_post_not_empty?
+    !session[:post_id].nil?
+  end
+
 
 end

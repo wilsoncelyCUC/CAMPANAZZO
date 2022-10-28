@@ -3,21 +3,25 @@
 <div class="container">
 
   <div class="card-post-new-tell-us">
-    <img src="https://res.cloudinary.com/wectcorp/image/upload/v1661920987/icon_campanazzo_qhypix.png"  class="avatar-large" alt="avatar image campanazzo">
+    <img src="https://res.cloudinary.com/wectcorp/image/upload/v1661920987/icon_campanazzo_qhypix.png"  class="avatar-medium" alt="avatar image campanazzo">
     <div class="card-post-new-tell-us-info">
       <p>Describenos el tipo de trabajo y te conseguiremos <strong>la persona apropiada</strong> para el trabajo</p>
     </div>
   </div>
-
-  <div class="title_page">
+  <div class="title_page my-3">
   <% if params[:search] %>
     <h1><%= params[:search][:query] %></h1>
   <% else %>
     <h1>¿Como te ayudamos?</h1>
   <% end %>
   </div>
+    <% if session[:flow_basic] == 'new' && session[:post_id] =! nil%>
+    <%= render "shared/form-post-basic", post: @post %>
+    <% else %>
+      <%= render "shared/form-post-profile", post: @post %>
+    <% end %>
 
-  <%= render "shared/form-post", post: @post %>
+
   <ul class="nav">
     <li><%= link_to "Back", root_path, :class => "nav-item px-1"%></li>
   </ul>

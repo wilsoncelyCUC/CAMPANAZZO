@@ -4,6 +4,10 @@ class Post < ApplicationRecord
   has_one_attached :photo
   belongs_to :profession
   has_many :reservations, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+ # validates :profession_id, presence: true
+
+
 
   #for Post quick assessment
   hard = 1

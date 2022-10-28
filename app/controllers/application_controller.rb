@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     Profession.find_by(name: element) ? Profession.find_by(name: element) : Profession.find_by(name: 'Limpieza')
   end
 
+  def get_profile
+    @profile_connected = Profile.find_by(user_id: current_user.id)
+  end
+
 end

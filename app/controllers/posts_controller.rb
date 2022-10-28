@@ -12,23 +12,63 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    session[:profession_name] = params[:search][:query] #storing the input from form-start into the session variable
-
+    session[:profession_name] = params[:search].nil? ? '' : params[:search][:profession] #storing the input from form-start into the session variable
+    @profile_contratar_buttom = session[:selected_profile_worker_id].nil? ? '' : Profile.find(session[:selected_profile_worker_id])
   end
 
   def create
     find_profile_customer
-    @post= Post.new(post_params)
-    profession = get_profession(session[:profession_name])
-    set_profession(profession, @post)
-    @post.profile_id = @profile_customer.id
-    @post.name = "Servicio de #{profession.name}"
-    if @post.save
-      session[:post_id] = @post.id
-      redirect_to profiles_path
-    else
-      render :new
+
+    #case: Customer select a worker from its profile/show
+    if !session[:selected_profile_worker_id].nil?
+      @profile_worker = Profile.find(session[:selected_profile_worker_id])
+      @post= Post.new(post_params)
+      profession = Profession.find(@post.carrier) #ugly shit
+      @post.profession = profession
+      @post.profile_id = @profile_customer.id
+      @post.name = profession.nil? ? 'Nuevo Servicio' : "Servicio de #{profession.name}"
+      if @post.save
+        session[:post_id] = @post.id
+        #create reservation from info gather on the post
+        @reservation = Reservation.new(profile_id: @profile_worker.id, post_id: @post.id, start_date: @post.date )
+        end_hour = @post.quick_assessment[0].nil? ? 1 : @post.quick_assessment[0].to_i
+        @reservation.end_date = (@reservation.start_date + end_hour.hour).to_datetime
+        @reservation.start_date = @reservation.start_date.to_datetime #validator only works with datetime and not with TimeToZone
+
+        if @reservation.save!
+
+          session[:post_id] = nil
+          session[:flow_basic] = 'terminated'
+          session[:selected_profile_worker_id] = nil
+          redirect_to posts_path
+
+        else
+
+          redirect_to post_path
+        end
+      else
+        render :new
+      end
+
+    else  #case: stardard case
+      find_profile_customer
+      @post= Post.new(post_params)
+      profession = get_profession(session[:profession_name])
+      @post.profession = profession
+      @post.profile_id = @profile_customer.id
+      if @post.save
+        @post.name = "Servicio de #{profession.name}"
+        session[:post_id] = @post.id
+        redirect_to profiles_path
+      else
+        render :new
+      end
     end
+
+
+
+
+
   end
 
   def show
@@ -50,7 +90,7 @@ class PostsController < ApplicationController
   def get_profession(element)
     #Temp Hard-code, if the profession isn't found then it returns cleaning.
     #correction will be provided an autocomplete list_of_profession in the homepage bar
-    Profession.find_by(name: element) ? Profession.find_by(name: element) : Profession.find_by(name: 'Limpieza')
+    Profession.find_by(name: element) ? Profession.find_by(name: element) : nil
   end
 
   def set_profession(profession, post)
@@ -77,6 +117,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:name, :date, :description, :url_video, :photo, :profession_id, :address, :available_48,:transport, :validated, :quick_assessment)
+    params.require(:post).permit(:name, :date, :description, :url_video, :photo, :profession_id, :address, :available_48,:transport, :validated, :quick_assessment, :experienced, :carrier)
   end
 end

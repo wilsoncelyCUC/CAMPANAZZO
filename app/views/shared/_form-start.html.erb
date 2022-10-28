@@ -1,6 +1,10 @@
 <%= simple_form_for :search, url: new_post_path, method: :get do |f| %>
+  <% session[:flow_basic] = 'new'%>
+  <% session[:post_id] = nil %>
+  <% session[:selected_profile_worker_id] = nil%>
   <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+    <%= f.input :profession, label: false, error: f.full_error(:profession), class: "form-control string", require: true   %>
+    <%# <input class="form-control string" type="text" name="search[query]" id="search_query" required /> %>
     <button name="button" type="submit" class="btn btn-flat">
       <i class="fas fa-search"></i> Search
     </button>
