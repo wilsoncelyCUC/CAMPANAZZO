@@ -1,0 +1,6 @@
+
+      <%= simple_form_for([@post, @review]) do |f| %>
+        <%= f.input :description %>
+        <%= f.input :score, collection: (1..5).to_a, label: "Evalua la experiencia" %>
+        <%= f.submit "Envia tu evaluación" %>
+      <% end %>

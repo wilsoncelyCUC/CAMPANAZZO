@@ -1,20 +1,23 @@
 class ReviewsController < ApplicationController
 
   def new
+    find_post
     @review = Review.new
   end
 
   def create
     @review = Review.new(review_params)
+    byebug
     find_post
     find_profile(@post)
     find_my_profession(@post, @profile_worker)
     @review.profile = @profile_worker
     @review.post = @post
-    @review.my_profession= @my_profession
+    @review.my_profession= @my_profession.first
     if @review.save
-      redirect_to profile_path(@profile)
+      redirect_to profile_path(@profile_worker)
     else
+      flash[:alert] = 'Algo salió mal :S '
       render :new
     end
 
@@ -32,7 +35,7 @@ class ReviewsController < ApplicationController
 
   private
     def review_params
-      params.require(:review).permit(:score, :description, :profile_id, :post_id, my_profession_id:)
+      params.require(:review).permit(:score, :description)
     end
 
 

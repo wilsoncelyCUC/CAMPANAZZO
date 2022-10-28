@@ -1,7 +1,9 @@
 <%= simple_form_for(@post) do |f| %>
-  <%= f.input :address, label: '¿ Profección ?', collection:  @profile_contratar_buttom.professions, label_method: lambda { |profession| profession.name }, required: true %>
+  <%= f.input :carrier, label: '¿ Profección ?', collection:  @profile_contratar_buttom.professions, label_method: lambda { |profession| profession.name }, required: true %>
   <%= f.input :address, label: '¿ Cual es tu dirección ?' %>
   <%= f.input :quick_assessment, label: '¿Podrías estimar la complejidad?', collection: Post::ASSESSMENT%>
+  <%= f.input :date,required: true,  as: :datetime, html5: true %>
+
 <div class="buttons">
   <%= f.submit class:"btn-flat" %>
   <button class= "create-gradient" href="#">

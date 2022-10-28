@@ -15,11 +15,10 @@
     <h1>¿Como te ayudamos?</h1>
   <% end %>
   </div>
-
-    <% if session[:flow_basic] == 'new' %>
+    <% if session[:flow_basic] == 'new' && session[:post_id] =! nil%>
     <%= render "shared/form-post-basic", post: @post %>
     <% else %>
-      <%= render "shared/form-post-profile", post: @post %>
+      <%= render "shared/form-post-profile  ", post: @post %>
     <% end %>
 
 

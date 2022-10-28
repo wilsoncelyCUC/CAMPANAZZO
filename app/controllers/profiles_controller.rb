@@ -58,7 +58,7 @@ class ProfilesController < ApplicationController
 
   def show
     get_profile
-    if session_not_empty?
+    if session_post_not_empty?
       find_post
       @profession = get_profession(session[:profession_name])
       @my_profession = (MyProfession.where(profile_id: @profile_worker.id).where(profession_id: @profession.id)).first
@@ -101,7 +101,7 @@ class ProfilesController < ApplicationController
     @post = Post.find(session[:post_id])
   end
 
-  def session_not_empty?
+  def session_post_not_empty?
     !session[:post_id].nil?
   end
 

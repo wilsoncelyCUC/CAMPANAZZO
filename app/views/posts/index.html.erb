@@ -36,7 +36,7 @@
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-medium" %>
                 <%  end %>
               </div>
-              <p>By: <strong><%= profile.nil? ?  'Wilson C.' : profile.name %> <%= profile.last_name[0].capitalize %>. </strong> </p>
+              <p>By: <strong><%= profile.nil? ?  'Wilson C.' : profile.name %> <%= profile.nil? ?  'C.' : profile.last_name[0].capitalize %>. </strong> </p>
             </div>
               <% else %>
             <div class="card-post-body-right">
@@ -86,7 +86,7 @@
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-medium" %>
                 <%  end %>
               </div>
-              <p>By: <strong><%= profile.nil? ?  'Wilson C.' : profile.name %> <%= profile.last_name[0].capitalize %>. %> </strong> </p>
+              <p>By: <strong><%= profile.nil? ?  'Wilson' : profile.name %> <%= profile.nil? ?  'C.' : profile.last_name[0].capitalize %>. %> </strong> </p>
             </div>
               <% else %>
             <div class="card-post-body-right">
@@ -98,7 +98,7 @@
               <div class="product-img-div">
                 <%= image_tag ("wilson_test.png"), class: "avatar-medium" %>
               </div>
-              <p>By: <strong><%= profile.nil? ?  'Wilson C.' : profile.name %> <%= profile.last_name[0].capitalize %>. %> </strong> </p>
+              <p>By: <strong><%= profile.nil? ?  'Wilson C.' : profile.name %> <%= profile.nil? ?  'C.' : profile.last_name[0].capitalize %>. %> </strong> </p>
             </div>
               <% end %>
           </div>
