@@ -12,18 +12,18 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    session[:profession_name] = params[:search][:query] #storing the input from form-start into the session variable
-
+    session[:profession_name] = params[:search].nil? ? '' : params[:search][:profession] #storing the input from form-start into the session variable
+    @profile_contratar_buttom = session[:profile_worker_id].nil? ? '' : Profile.find(session[:profile_worker_id])
   end
 
   def create
     find_profile_customer
     @post= Post.new(post_params)
     profession = get_profession(session[:profession_name])
-    set_profession(profession, @post)
+    @post.profession = profession
     @post.profile_id = @profile_customer.id
-    @post.name = "Servicio de #{profession.name}"
     if @post.save
+      @post.name = "Servicio de #{profession.name}"
       session[:post_id] = @post.id
       redirect_to profiles_path
     else
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   def get_profession(element)
     #Temp Hard-code, if the profession isn't found then it returns cleaning.
     #correction will be provided an autocomplete list_of_profession in the homepage bar
-    Profession.find_by(name: element) ? Profession.find_by(name: element) : Profession.find_by(name: 'Limpieza')
+    Profession.find_by(name: element) ? Profession.find_by(name: element) : nil
   end
 
   def set_profession(profession, post)

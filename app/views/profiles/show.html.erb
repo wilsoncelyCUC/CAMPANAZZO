@@ -29,6 +29,19 @@
   </div>
 
   <div class="" data-controller="booker">
+  <% if @profile_connected == @profile_worker  %>
+    <div class="button-selectionar" >
+      <button class="btn-campanazzo">Editar</button>
+    </div>
+  <% elsif session[:flow_basic] == 'terminated' %>
+    <div class="button-selectionar" >
+      <% session[:profile_worker_id] = @profile_worker.id %>
+      <%= link_to 'Contratar', new_post_path, class: "btn-campanazzo"  %>
+      <button class="btn-campanazzo">Contratar</button>
+    </div>
+
+  <% else %>
+
     <div class="button-selectionar" data-booker-target="select">
       <button class="btn-campanazzo" data-action="click->booker#displayForm">Seleccionar</button>
     </div>
@@ -39,6 +52,9 @@
         <%= f.submit 'Confirmar', class: 'btn-campanazzo' %>
       <% end %>
     </div>
+
+
+  <% end %>
   </div>
 
 
@@ -59,12 +75,8 @@
               <p><%= review.created_at.strftime("%m/%d/%Y") %></p>
               <p><%#= review.created_at.strftime("%A %b %d") %></p>
             </div>
-            <% if @profile_worker == @profile_connected %>
-              <% displayer = '' %>
-              <% else %>
-              <% displayer = 'd-none' %>
-            <% end %>
-            <div class="card-review-top-actions <%= displayer%> ">
+
+            <div class="card-review-top-actions d-none ">
               <a href="#"> <i class="fas fa-pencil-alt"></i></a>
               <a href="#"> <i class="far fa-trash-alt"></i></a>
             </div>
@@ -73,7 +85,7 @@
             <div class="card-review-body-profession">
             </div>
             <div class="card-review-body-description">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales sapien nec nisl condimentum malesuada. Suspendisse volutpat ultricies diam eget sodales. Suspendisse ac lectus laoreet nibh tempor feugiat in non lacus.</p>
+              <p><% review.description %></p>
             </div>
             <div class="card-review-rating">
               <% start = 3 %>

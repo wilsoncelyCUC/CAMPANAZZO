@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   belongs_to :profession
   has_many :reservations, dependent: :destroy
   has_many :reviews, dependent: :destroy
+ # validates :profession_id, presence: true
+
 
 
   #for Post quick assessment

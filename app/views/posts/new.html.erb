@@ -8,7 +8,6 @@
       <p>Describenos el tipo de trabajo y te conseguiremos <strong>la persona apropiada</strong> para el trabajo</p>
     </div>
   </div>
-
   <div class="title_page my-3">
   <% if params[:search] %>
     <h1><%= params[:search][:query] %></h1>
@@ -17,7 +16,13 @@
   <% end %>
   </div>
 
-  <%= render "shared/form-post", post: @post %>
+    <% if session[:flow_basic] == 'new' %>
+    <%= render "shared/form-post-basic", post: @post %>
+    <% else %>
+      <%= render "shared/form-post-profile", post: @post %>
+    <% end %>
+
+
   <ul class="nav">
     <li><%= link_to "Back", root_path, :class => "nav-item px-1"%></li>
   </ul>

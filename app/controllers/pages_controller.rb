@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     @professions = Profession.all.limit(4)
     @profiles = Profile.all.order("score DESC")
     @profiles_top= (Profile.where(score: 4..5 )).limit(5).order("score DESC")
+    session[:profile_worker] = nil
   end
 
 # to remove after components developpement

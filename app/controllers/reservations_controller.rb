@@ -20,7 +20,8 @@ before_action :find_post
         redirect_to profiles_path
       end
       if @reservation.save!
-        session[:profile_worker_id] = @reservation.profile.id
+        session[:post_id] = nil
+        session[:flow_basic] = 'terminated'
         redirect_to posts_path
       else
         render :profiles_path
