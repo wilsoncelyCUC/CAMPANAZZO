@@ -1,6 +1,8 @@
 <%= simple_form_for(@post) do |f| %>
   <%= f.input :address, label: '¿ Cual es tu dirección ?' %>
   <%= f.input :quick_assessment, label: '¿Podrías estimar la complejidad?', collection: Post::ASSESSMENT%>
+  <%= f.input :description, label: '¿ Dinos más sobre la tarea?' %>
+
 <div class="buttons">
   <%= f.submit class:"btn-flat" %>
   <button class= "create-gradient" href="#">

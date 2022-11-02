@@ -3,6 +3,7 @@
   <%= f.input :address, label: '¿ Cual es tu dirección ?' %>
   <%= f.input :quick_assessment, label: '¿Podrías estimar la complejidad?', collection: Post::ASSESSMENT%>
   <%= f.input :date,required: true,  as: :datetime, html5: true %>
+  <%= f.input :description, label: '¿ Dinos más sobre la tarea?' %>
 
 <div class="buttons">
   <%= f.submit class:"btn-flat" %>

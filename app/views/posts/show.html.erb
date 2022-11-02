@@ -1,0 +1,78 @@
+<div class="container">
+ <div class="title_page">
+    <h1><%= @post.name.nil? ? "Servicio Nuevo" : @post.name %></h1>
+  </div>
+  <ul class="nav nav-pills mb-3 mt-3 nav-fill" id="pills-tab" role="tablist">
+    <% if @buttons_show %>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="pills-detalles-tab" data-bs-toggle="pill" data-bs-target="#pills-detalles" type="button" role="tab" aria-controls="pills-detalles" aria-selected="true">Detalles</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link " id="pills-chat-tab" data-bs-toggle="pill" data-bs-target="#pills-chat" type="button" role="tab" aria-controls="pills-chat" aria-selected="false">Chat</button>
+    </li>
+    <%  end%>
+  </ul>
+
+  <div class="tab-pane fade show active" id="pills-detalles" role="tabpanel" aria-labelledby="pills-detalles-tab">
+    <h2 class="small-title  ">Trabajador</h2>
+    <hr class="mt-1">
+    <div class="show-post-worker-section ">
+      <div class="avatar-small">
+        <% if @profile_worker.photo.key %>
+          <%= link_to cl_image_tag(@profile_worker.photo.key, class: "avatar-medium"), profile_path(@profile_worker) %>
+        <% else %>
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-medium" %>
+        <%  end %>
+      </div>
+      <h5><%= @profile_worker.name + ' ' + @profile_worker.last_name[0].capitalize %></h5>
+      <div class="status-reservation label-skills btn-rounded">
+        <%# byebug %>
+        <%= @reservation.status%>
+      </div>
+    </div>
+    <hr class="mt-2">
+    <h2 class="small-title  ">Detalles</h2>
+    <hr class="mt-1">
+    <div class="date d-flex justify-content-between">
+    <p><i class="fa-solid fa-calendar-days"></i>  <strong>Fecha:</strong></p>
+    <p><%= @reservation.nil? ? 'Sin reservación' :  @reservation.start_date.strftime("%A %Y-%m-%d") %></p>
+    </div>
+    <div class="hour d-flex justify-content-between">
+    <p><i class="fa-solid fa-clock"></i>  <strong>Hora:</strong></p>
+    <p><%= @reservation.nil? ? 'Sin hora' :  (@reservation.start_date.strftime("%l:%M %P")+' - '+ @reservation.end_date.strftime("%l:%M %P"))%></p>
+    </div>
+    <hr class="mt-2 ">
+    <div class="precio d-flex justify-content-between">
+      <p><i class="fa-solid fa-dollar-sign"></i> <strong>Precio:</strong></p>
+      <p><%= @my_profession.nil? ? 'Sin precio' :  number_to_currency(@my_profession.price_hour, {unit: '$', precision: 0}) %></p>
+    </div>
+    <div class="direccion d-flex justify-content-between">
+      <p><i class="fa-solid fa-location-pin"></i> <strong>Dirección:</strong></p>
+      <p><%= @post.address.nil? ? 'Sin dirección' :  @post.address %></p>
+    </div>
+    <hr class="mt-2 ">
+    <h2 class="small-title  ">Descripcción:</h2>
+    <p><%= @post.description.nil? ? 'No hay descripcción' : @post.description %></p>
+
+    <% if @buttons_show %>
+      <div class=" mt-3 d-flex p-2  ">
+        <%= link_to 'Modificar', edit_post_path(@post) , class: "btn-campanazzo" %>
+      </div>
+      <div class="d-flex p-2  ">
+        <%= link_to 'Cancelar', post_path(@post), data: { turbo_method: :delete, confirm: "¿ estas seguro que quieres eliminar la actividad?"}, class: "btn-campanazzo" %>
+      </div>
+    <%end  %>
+
+  </div>
+
+
+  <div class="tab-pane fade" id="pills-chat" role="tabpanel" aria-labelledby="pills-chat-tab">
+
+  </div>
+
+
+
+
+
+
+</div>

@@ -1,5 +1,4 @@
 class Post < ApplicationRecord
-  #belongs_to :customer, class_name: 'Profile', foreign_key: "profile_id"
   belongs_to :customer, class_name: 'Profile', foreign_key: "profile_id"
   has_one_attached :photo
   belongs_to :profession

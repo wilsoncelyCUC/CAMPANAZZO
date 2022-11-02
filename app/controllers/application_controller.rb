@@ -13,4 +13,18 @@ class ApplicationController < ActionController::Base
     @profile_connected = Profile.find_by(user_id: current_user.id)
   end
 
+  def status_checker_past?(post)
+    if !post.reservations.empty?
+      resa = post.reservations
+      if resa.first.end_date < Date.today
+        true
+      else
+        false
+      end
+    else
+      false
+    end
+  end
+
+
 end
