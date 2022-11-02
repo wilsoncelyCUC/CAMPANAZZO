@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :find_post, only: [:show, :edit, :update]
 
   def index
     find_profile_customer
@@ -72,15 +72,39 @@ class PostsController < ApplicationController
   end
 
   def show
+    @buttons_show = true
+    find_profile_worker(@post)
+    if status_checker_past?(@post)
+       if !@post.reservations.first.nil?
+        reservation = @post.reservations.first
+        reservation.status = 5
+        @reservation = reservation
+        @buttons_show = false
+       end
+    else
+      @reservation = @post.reservations.first.nil? ? nil : @post.reservations.first
+    end
+    @my_profession = MyProfession.where(profile_id: @profile_worker.id , profession_id: @post.profession_id ).first
   end
 
   def edit
+
   end
 
   def update
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+    else
+      render :new
+    end
   end
 
   def destroy
+    find_post
+    @post.reservations.delete_all
+    @post.reviews.delete_all
+    @post.delete
+    redirect_to posts_path, status: :see_other
   end
 
 
@@ -114,6 +138,10 @@ class PostsController < ApplicationController
       @profile_customer = Profile.new(user_id: current_user.id)
       @profile_customer.save
     end
+  end
+
+  def find_profile_worker(post)
+    @profile_worker = post.reservations.first.profile.nil? ? nil : post.reservations.first.profile
   end
 
   def post_params

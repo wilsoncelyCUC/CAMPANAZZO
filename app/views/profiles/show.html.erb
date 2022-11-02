@@ -88,7 +88,7 @@
               <p><% review.description %></p>
             </div>
             <div class="card-review-rating">
-              <% start = review.score %>
+              <% start = profile_customer.score.nil? ? 1 : profile_customer.score.ceil %>
               <% start.times do |start| %>
                 <i class="fas fa-star"></i>
               <% end %>

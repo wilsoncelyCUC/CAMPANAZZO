@@ -6,6 +6,7 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
+@import "star-rating.js/dist/star-rating.css";
 
 // Your CSS partials
 @import "components/index";
@@ -13,4 +14,4 @@
 @import "pages/index-professions";
 @import "pages/post-new";
 @import "pages/show-profile";
-@import "star-rating.js/dist/star-rating.css";
+@import "pages/show-post";

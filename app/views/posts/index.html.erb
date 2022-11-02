@@ -1,6 +1,6 @@
 <div class="container">
   <div class="title_page">
-    <h1>My Activities</h1>
+    <h1>Mis Trabajos</h1>
   </div>
   <ul class="nav nav-pills mb-3 mt-3 nav-fill" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
@@ -66,7 +66,7 @@
       <div class="cards">
       <% if  !@my_posts_past.nil? %>
         <% @my_posts_past.each do |post| %>
-        <div class="card-post">
+         <div class="card-post">
           <div class="card-post-head">
             <h2><%= post.name %></h2>
           </div>
@@ -86,7 +86,7 @@
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-medium" %>
                 <%  end %>
               </div>
-              <p>By: <strong><%= profile.nil? ?  'Wilson' : profile.name %> <%= profile.nil? ?  'C.' : profile.last_name[0].capitalize %>. %> </strong> </p>
+              <p>By: <strong><%= profile.nil? ?  'Wilson C.' : profile.name %> <%= profile.nil? ?  'C.' : profile.last_name[0].capitalize %>. </strong> </p>
             </div>
               <% else %>
             <div class="card-post-body-right">
@@ -98,7 +98,7 @@
               <div class="product-img-div">
                 <%= image_tag ("wilson_test.png"), class: "avatar-medium" %>
               </div>
-              <p>By: <strong><%= profile.nil? ?  'Wilson C.' : profile.name %> <%= profile.nil? ?  'C.' : profile.last_name[0].capitalize %>. %> </strong> </p>
+              <p>By: <strong>Wilson C.</strong> </p>
             </div>
               <% end %>
           </div>
