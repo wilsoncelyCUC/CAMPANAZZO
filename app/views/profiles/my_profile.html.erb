@@ -1,0 +1,195 @@
+<div class="banner-show">
+  <div class="container">
+    <h1><%= @profile.name %> <%= @profile.last_name %></h1>
+    <div class="rating">
+      <% start = @profile.score.nil? ? 3 : @profile.score.ceil %>
+        <% start.times do |start| %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <% (5-start).times do |start| %>
+        <i class="far fa-star"></i>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container imagen-perfil">
+  <div class="pictures">
+    <%if @profile.photo.key %>
+    <%= cl_image_tag @profile.photo.key, class: "avatar-large margin-top-negative center mb-3" %>
+    <%else %>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
+    <%end %>
+  </div>
+</div>
+
+  <%if @profile.type_profile == 'Customer' %>
+<div class="container">
+  <div class="customer-section ">
+    <div class="date d-flex justify-content-between">
+      <h2 class="small-title">Cliente</h2>
+      <%= link_to 'Editar',edit_profile_path(@profile), class: "btn-myprofile-edit"  %>
+    </div>
+
+    <hr class="mt-1">
+    <div class="my-profession-info">
+      <div class="date d-flex justify-content-between">
+        <p> <i class="fa-solid fa-octagon-plus"></i> <strong>Cliente Desde</strong></p>
+        <p><%= @profile.created_at.nil? ? 'Sin fecha' :  ( @profile.created_at.strftime("%A %Y-%m-%d"))%></p>
+      </div>
+      <div class="date d-flex justify-content-between">
+        <p><i class="fa-solid fa-cake-candles"></i> <strong>Fecha De Nacimiento</strong></p>
+        <p><%= @profile.birthday.nil? ? 'Sin Fecha De Nacimiento' :  @profile.birthday %></p>
+      </div>
+      <div class="date d-flex justify-content-between">
+        <p><i class="fa-solid fa-location-pin"></i> <strong>Dirección</strong></p>
+        <p><%= @profile.address.nil? ? 'Sin Dirección' :  @profile.address %></p>
+      </div>
+      <div class="date d-flex justify-content-between">
+        <p><i class="fa-solid fa-id-card"></i> <strong>Cédula de Ciudadanía:</strong></p>
+        <p><%= @profile.personal_number.nil? ? 'Sin Cédula' :  @profile.personal_number %></p>
+      </div>
+      <div class="date d-flex justify-content-between">
+        <p><i class="fa-brands fa-whatsapp"></i> <strong>Numero De Whatsapp</strong></p>
+        <p><%= @profile.phone.nil? ? 'Sin Numero' :  @profile.phone %></p>
+      </div>
+    </div>
+
+    <div class="mt-3 d-flex justify-content-between">
+      <h2 class="small-title ">Credenciales De Conexion</h2>
+      <%= link_to 'Cambiar Password', edit_user_registration_path, class: "btn-myprofile-edit"  %>
+    </div>
+    <hr class="mt-1">
+    <div class="trabajos">
+      <div class="date d-flex justify-content-between">
+        <p><i class="fa-solid fa-envelope"></i> <strong>Correo Electrónico</strong></p>
+        <p><%= @user_profile.email.nil? ? 'Sin email' :  @user_profile.email %></p>
+      </div>
+    </div>
+
+    <h2 class="small-title mt-3">Trabajos</h2>
+    <hr class="mt-1">
+    <div class="trabajos">
+      <div class="date d-flex justify-content-between">
+        <p>Numero de Trabajos </p>
+        <p><%= @profile.posts.nil? ? 'Dejate ayudar' : @profile.posts.count%></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <%elsif  @profile.type_profile == 'Professional' %>
+<div class="container">
+  <div class="worker-section">
+    <div class="date d-flex justify-content-between">
+      <h2 class="small-title">Yo Soy Un Campanazzo</h2>
+      <%= link_to 'Editar',edit_profile_path(@profile), class: "btn-myprofile-edit"  %>
+    </div>
+
+    <hr class="mt-1">
+    <div class="my-profession-info">
+      <div class="date d-flex justify-content-between">
+        <p> <i class="fa-solid fa-octagon-plus"></i> <strong>Cliente Desde</strong></p>
+        <p><%= @profile.created_at.nil? ? 'Sin fecha' :  ( @profile.created_at.strftime("%A %Y-%m-%d"))%></p>
+      </div>
+      <div class="date d-flex justify-content-between">
+        <p><i class="fa-solid fa-cake-candles"></i> <strong>Fecha De Nacimiento</strong></p>
+        <p><%= @profile.birthday.nil? ? 'Sin Fecha De Nacimiento' :  @profile.birthday %></p>
+      </div>
+      <div class="date d-flex justify-content-between">
+        <p><i class="fa-solid fa-location-pin"></i> <strong>Dirección</strong></p>
+        <p><%= @profile.address.nil? ? 'Sin Dirección' :  @profile.address %></p>
+      </div>
+      <div class="date d-flex justify-content-between">
+        <p><i class="fa-solid fa-id-card"></i> <strong>Cédula de Ciudadanía:</strong></p>
+        <p><%= @profile.personal_number.nil? ? 'Sin Cédula' :  @profile.personal_number %></p>
+      </div>
+      <div class="date d-flex justify-content-between">
+        <p><i class="fa-brands fa-whatsapp"></i> <strong>Numero De Whatsapp</strong></p>
+        <p><%= @profile.phone.nil? ? 'Sin Numero' :  @profile.phone %></p>
+      </div>
+
+
+    <div class="mt-3 d-flex justify-content-between">
+      <h2 class="small-title ">Credenciales De Conexion</h2>
+      <%= link_to 'Cambiar Password', edit_user_registration_path, class: "btn-myprofile-edit"  %>
+    </div>
+
+    <hr class="mt-1">
+    <div class="trabajos">
+      <div class="date d-flex justify-content-between">
+        <p><i class="fa-solid fa-envelope"></i> <strong>Correo Electrónico</strong></p>
+        <p><%= @user_profile.email.nil? ? 'Sin email' :  @user_profile.email %></p>
+      </div>
+    </div>
+
+      <h2 class="small-title mt-3">Trabajos</h2>
+      <hr class="mt-1">
+      <div class="trabajos">
+        <div class="date d-flex justify-content-between">
+          <p>Numero de Trabajos </p>
+          <p><%= @profile.reservations.nil? ? 'Dejate ayudar' : @profile.reservations.count%></p>
+        </div>
+         <div class="date d-flex justify-content-between">
+          <p>Recomendaciones </p>
+          <p><%= @profile.reviews.nil? ? 'Ya llegarán' : @profile.reviews.count%></p>
+        </div>
+      </div>
+
+    <% @skills.each do |skill| %>
+      <h2 class="small-title mt-3">Mis Profesiones</h2>
+    <div class="mt-3 d-flex justify-content-between">
+      <h2 class="small-title ">Mis Profesiones</h2>
+      <%= link_to 'Cambiar Password', edit_user_registration_path, class: "btn-myprofile-edit"  %>
+    </div>
+      <hr class="mt-1">
+      <div class="card-review">
+        <div class="card-review-top">
+          <div class="card-review-top-customer">
+            <% profession = Profession.find(skill.profession_id)  %>
+            <h5><%= profession.name  %></h5>
+          </div>
+          <div class="card-review-top-actions">
+            <a href="#"> <i class="fas fa-pencil-alt"></i></a>
+            <a href="#"> <i class="far fa-trash-alt"></i></a>
+          </div>
+        </div>
+        <div class="card-review-body">
+          <div class="d-flex justify-content-between">
+            <p><i class="fa-solid fa-sack-dollar"></i> <strong>Mi Precio</strong></p>
+            <% if skill.price_hour.nil? && !skill.price_day.nil?%>
+            <p><%= skill.price_day%> <%= profession.currency%> </p>
+            <p><%= number_to_currency(skill.price_day, {unit: '$', precision: 0}) %></p>
+            <p>Por Jornada Completa</p>
+            <% elsif !skill.price_hour.nil? && skill.price_day.nil?%>
+            <p><%= number_to_currency(skill.price_hour, {unit: '$', precision: 0}) %></p>
+            <p>Por Hora</p>
+            <% else %>
+            <p>Sin Precio</p>
+            <p>Por Hora/Dia</p>
+            <% end %>
+          </div>
+          <div class="date d-flex justify-content-between">
+            <p><i class="fa-brands fa-whatsapp"></i> <strong>Precio Mercado</strong></p>
+            <p> <%= number_to_currency(profession.recommended_price, {unit: profession.currency , precision: 0}) %> </p>
+            <p><strong><%= profession.unit%></strong></p>
+          </div>
+          <div class="card-review-body-description mt-2">
+            <div class="date d-flex justify-content-between">
+              <p> Numero de Trabajos </p>
+              <p>TbD</strong></p>
+            </div>
+          </div>
+      </div>
+    </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+
+  <%else %>
+  <div class="other">
+    <h2>Other</h2>
+  </div>
+  <%end %>

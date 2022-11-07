@@ -16,7 +16,11 @@
 
 <div class="container">
   <div class="pictures">
+ <% if @profile_worker.photo.key %>
     <%= cl_image_tag @profile_worker.photo.key, class: "avatar-large margin-top-negative center mb-3" %>
+  <% else %>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
+  <%  end %>
   </div>
   <div class="show-worker-description">
     <p><%= @my_profession.nil? ? "Bienvenidos a mi perfil.  Quiero ayudarte, por lo que mira mis competencia y seleccióname cuando necesites." : @my_profession.bio  %></p>

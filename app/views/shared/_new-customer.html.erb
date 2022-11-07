@@ -1,0 +1,17 @@
+<%= simple_form_for(@profile) do |f| %>
+    <%= f.input :name, label: 'Nombre'%>
+    <%= f.input :last_name, label: 'Apellido' %>
+    <%= f.input :birthday , label: 'Fecha de nacimiento'%>
+    <%= f.input :address , label: 'Dirección'%>
+    <%= f.input :phone , label: 'Celular (E.G. 3005520741)'%>
+    <%= f.input :email , label: 'Correo Electrónico'%>
+    <%= f.input :photo, label: 'Foto de Perfil',  as: :file %>
+    <%= f.input :personal_number, label: 'Cedula'%>
+
+    <div class="buttons">
+      <%= f.submit   'Enviar', class:"btn-campanazzo" %>
+      <button class= "create-gradient" href="#">
+        <%= link_to "Return to home page", root_path %>
+      </button>
+    </div>
+  <% end %>
