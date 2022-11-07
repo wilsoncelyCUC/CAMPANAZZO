@@ -7,7 +7,6 @@ class PostsController < ApplicationController
     @my_posts_current = Post.joins(:reservations).where( profile_id:  @profile_customer.id ).where( "reservations.start_date >= ?", Date.today).references(:reservations)
     #@my_posts_current = Post.where('date >= ? AND profile_id = ?' , DateTime.now,  @profile_customer.id )
     @my_posts_past = Post.where('date < ? AND profile_id = ?' , DateTime.now,  @profile_customer.id )
-
   end
 
   def new
@@ -18,7 +17,6 @@ class PostsController < ApplicationController
 
   def create
     find_profile_customer
-
     #case: Customer select a worker from its profile/show
     if !session[:selected_profile_worker_id].nil?
       @profile_worker = Profile.find(session[:selected_profile_worker_id])
@@ -29,7 +27,7 @@ class PostsController < ApplicationController
       @post.name = profession.nil? ? 'Nuevo Servicio' : "Servicio de #{profession.name}"
       if @post.save
         session[:post_id] = @post.id
-        #create reservation from info gather on the post
+        #create reservation from post/new
         @reservation = Reservation.new(profile_id: @profile_worker.id, post_id: @post.id, start_date: @post.date )
         end_hour = @post.quick_assessment[0].nil? ? 1 : @post.quick_assessment[0].to_i
         @reservation.end_date = (@reservation.start_date + end_hour.hour).to_datetime
@@ -43,7 +41,6 @@ class PostsController < ApplicationController
           redirect_to posts_path
 
         else
-
           redirect_to post_path
         end
       else
@@ -78,6 +75,7 @@ class PostsController < ApplicationController
        if !@post.reservations.first.nil?
         reservation = @post.reservations.first
         reservation.status = 5
+        @post.state = 5
         @reservation = reservation
         @buttons_show = false
        end

@@ -1,7 +1,51 @@
 class ProfilesController < ApplicationController
   before_action :find_profile, only: [:show, :edit, :update, :destroy]
 
+  def new
+    @profile = Profile.new
+  end
+
+  def create
+    @profile = Profile.new(profile_params)
+    @profile.user = current_user
+    if @profile.save!
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @profile = @profile_worker
+  end
+
+  def my_profile
+    @profile = Profile.find_by(user_id: current_user.id)
+    @user_profile = User.find(@profile.user_id)
+
+    if @profile.type_profile == 'Professional'
+      @skills = []
+      @profile.my_professions.each do |my_profession|
+        @skills << MyProfession.find(my_profession.id)
+      end
+    end
+  end
+
+  def update
+    @profile = @profile_worker
+    if @profile.update(profile_params)
+      if @profile == Profile.find_by(user_id: current_user.id)
+        redirect_to my_profile_path
+      else
+        redirect_to profile_path(@profile)
+      end
+    else
+      render :new
+    end
+  end
+
   def index
+
     if session[:profession_name]
       #Feature:  Button SELECTIONAR
       find_post
@@ -15,6 +59,7 @@ class ProfilesController < ApplicationController
     else
       redirect_to root_path
     end
+    @profiles = profiles_for_session.nil? ? Profile.all : profiles_for_session
 
     #2) Enable filter bar. element: Type, Date, Hour, Price
     if params[:filter].present?
@@ -53,18 +98,21 @@ class ProfilesController < ApplicationController
       end
      @profiles =  profiles_for_session
     end
-    @profiles = profiles_for_session.nil? ? [] : profiles_for_session
+  end
+
+  def all
+    @profiles = Profile.all
   end
 
   def show
     get_profile
-    if session_post_not_empty?
-      find_post
-      @profession = get_profession(session[:profession_name])
-      @my_profession = (MyProfession.where(profile_id: @profile_worker.id).where(profession_id: @profession.id)).first
-    else
-      @post = Post.new
-    end
+    # if session_profile_not_empty?
+    #   find_profile
+    #   @profession = get_profession(session[:profession_name])
+    #   @my_profession = (MyProfession.where(profile_id: @profile_worker.id).where(profession_id: @profession.id)).first
+    # else
+    #   @profile = profile.new
+    # end
 
     @reservation = Reservation.new
 
@@ -77,7 +125,7 @@ class ProfilesController < ApplicationController
 
   def destroy
     find_profile
-    find_review(@profile_worker, @post )
+    find_review(@profile_worker, @profile )
   end
 
   def filter
@@ -89,21 +137,26 @@ class ProfilesController < ApplicationController
     @profile_worker = Profile.find(params[:id])
   end
 
-  def find_review(profile_worker, post )
-    @review = profile_worker.reviews.where(post_id: post)
-  end
-
-  def profile_params
-    params.require(:article).permit( :photo)
-  end
-
   def find_post
     @post = Post.find(session[:post_id])
   end
 
-  def session_post_not_empty?
-    !session[:post_id].nil?
+  def find_review(profile_worker, profile )
+    @review = profile_worker.reviews.where(profile_id: profile)
   end
 
+
+
+  # def find_profile_worker
+  #   @profile = profile.find(session[:profile_id])
+  # end
+
+  def session_profile_not_empty?
+    !session[:profile_id].nil?
+  end
+
+  def profile_params
+    params.require(:profile).permit(:name, :last_name, :birthday, :type_profile, :country, :address, :personal_number, :vehicle , :photo, :phone, :email)
+  end
 
 end

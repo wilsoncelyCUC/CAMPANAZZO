@@ -18,8 +18,32 @@
   margin-top: -75px;
 }
 
-h1 h2 h3 p {
-  margin: 0;
+.professiones {
+
+   h2  {
+    margin-top: 2rem 0 ;
+    color: $cfirst;
+    text-align: center;
+  }
+
+  p{
+    text-align: center;
+    margin-top: 0 ;
+    color: $cfirst;
+  }
+}
+
+.write {
+  p{
+    text-align: center;
+    margin-bottom: 0 ;
+    color: $cfirst;
+  }
+
+}
+
+.start-form {
+  margin-top: 0;
 }
 
 .home-work-near-me {
