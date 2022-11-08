@@ -1,4 +1,14 @@
 <div class="container">
-  <h1>Nuevo Cliente</h1>
-  <%= render "shared/new-customer", profile: @profile %>
+  <h1 class="text-center my-3">Nuevo Cliente</h1>
+
+  <% if current_user.type_profile ==  @type_customer %>
+    <%= render "shared/new-customer", profile: @profile %>
+  <% elsif current_user.type_profile == @type_worker %>
+    <%= render "shared/new-worker", profile: @profile %>
+  <% else %>
+    <%= render "shared/form-customer", profile: @profile %>
+  <% end %>
+
 </div>
+
+<!-- the variables : @type_customer and @type_worker were declared on the application controller -->

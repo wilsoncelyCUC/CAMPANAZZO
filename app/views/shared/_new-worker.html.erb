@@ -1,5 +1,5 @@
 <%= simple_form_for(@profile) do |f| %>
-   <%= f.input :name,
+    <%= f.input :name,
                 label: 'Nombre',
                 required: true,
                 autofocus: true,
@@ -8,7 +8,8 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "type_profile" } %>
-      <%= f.input :address , label: 'Dirección'%>
+    <%= f.input :birthday , label: 'Fecha de nacimiento'%>
+    <%= f.input :address , label: 'Dirección'%>
     <%= f.input :photo, label: 'Foto de Perfil',  as: :file %>
     <%= f.input :personal_number,
                 label: 'Cedula',
@@ -17,6 +18,6 @@
                 input_html: { autocomplete: "type_profile" } %>
 
     <div class="buttons">
-      <%= f.submit 'Inscribirse Como Cliente', class:"btn-campanazzo" %>
+      <%= f.submit   'Inscribirse Como Trabajador', class:"btn-campanazzo" %>
     </div>
   <% end %>

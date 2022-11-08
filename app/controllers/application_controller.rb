@@ -1,5 +1,20 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :get_types_profiles
+
+  def configure_permitted_parameters
+    # For additional fields in app/views/devise/registrations/new.html.erb
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:whatsapp, :type_profile])
+
+    # For additional in app/views/devise/registrations/edit.html.erb
+    devise_parameter_sanitizer.permit(:account_update, keys: [:whatsapp, :type_profile])
+  end
+
+  def after_sign_in_path_for(resource)
+    new_profile_path
+  end
+
 
   private
 
@@ -24,6 +39,11 @@ class ApplicationController < ActionController::Base
     else
       false
     end
+  end
+
+  def get_types_profiles
+    @type_customer = 'Busco CONTRATAR Trabajadores'
+    @type_worker = 'Quiero TRABAJAR'
   end
 
 
