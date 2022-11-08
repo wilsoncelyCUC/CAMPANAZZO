@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   end
   resources :reservations, only: [:update, :destroy]
 
+
+  resources :my_professions
   #resources :review, only:[:new, :create]
 
 end
