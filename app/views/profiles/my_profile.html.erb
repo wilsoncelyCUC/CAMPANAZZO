@@ -136,36 +136,34 @@
         </div>
       </div>
 
-    <% @skills.each do |skill| %>
-      <h2 class="small-title mt-3">Mis Profesiones</h2>
     <div class="mt-3 d-flex justify-content-between">
       <h2 class="small-title ">Mis Profesiones</h2>
-      <%= link_to 'Cambiar Password', edit_user_registration_path, class: "btn-myprofile-edit"  %>
+      <%= link_to 'Nueva Profesion', new_my_profession_path, class: "btn-myprofile-edit"  %>
     </div>
       <hr class="mt-1">
+    <% @skills.each do |skill| %>
       <div class="card-review">
         <div class="card-review-top">
           <div class="card-review-top-customer">
             <% profession = Profession.find(skill.profession_id)  %>
             <h5><%= profession.name  %></h5>
           </div>
-          <div class="card-review-top-actions">
-            <a href="#"> <i class="fas fa-pencil-alt"></i></a>
-            <a href="#"> <i class="far fa-trash-alt"></i></a>
+          <div class="card-review-top-actions my-customer-edit">
+            <%= link_to '', edit_my_profession_path(skill), class: 'fas fa-pencil-alt text-decoration-none' %>
+            <%= link_to '', my_profession_path(skill), data: { turbo_method: :delete, confirm: "¿ estas seguro que quieres eliminar la actividad?"}, class: 'far fa-trash-alt text-decoration-none' %>
           </div>
         </div>
         <div class="card-review-body">
           <div class="d-flex justify-content-between">
             <p><i class="fa-solid fa-sack-dollar"></i> <strong>Mi Precio</strong></p>
             <% if skill.price_hour.nil? && !skill.price_day.nil?%>
-            <p><%= skill.price_day%> <%= profession.currency%> </p>
             <p><%= number_to_currency(skill.price_day, {unit: '$', precision: 0}) %></p>
-            <p>Por Jornada Completa</p>
+            <p><%= profession.unit %></p>
             <% elsif !skill.price_hour.nil? && skill.price_day.nil?%>
             <p><%= number_to_currency(skill.price_hour, {unit: '$', precision: 0}) %></p>
-            <p>Por Hora</p>
+            <p><%= profession.unit %></p>
             <% else %>
-            <p>Sin Precio</p>
+            <p>No es valido (doble precio)</p>
             <p>Por Hora/Dia</p>
             <% end %>
           </div>

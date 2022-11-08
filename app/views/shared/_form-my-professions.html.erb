@@ -1,0 +1,14 @@
+<%= simple_form_for(@my_profession) do |f| %>
+    <%= f.input :profession_id,  collection: Profession.all, required: false %>:
+    <%= f.input :year %>
+    <%= f.input :price_hour%>
+    <%= f.input :price_day%>
+    <%= f.input :bio%>
+
+    <div class="buttons">
+      <%= f.submit class:"btn-flat" %>
+      <button class= "create-gradient" href="#">
+        <%= link_to "Return to home page", root_path %>
+      </button>
+    </div>
+  <% end %>

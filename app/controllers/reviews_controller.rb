@@ -7,7 +7,6 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    byebug
     find_post
     find_profile(@post)
     find_my_profession(@post, @profile_worker)
