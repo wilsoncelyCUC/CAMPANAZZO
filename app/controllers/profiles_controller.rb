@@ -9,7 +9,12 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user = current_user
     if @profile.save!
-      redirect_to root_path
+      set_type_profile(@profile , current_user)
+      if @profile.type_profile == 'Customer'
+        redirect_to root_path
+      else
+        redirect_to my_profile_path
+      end
     else
       render :new
     end
@@ -146,17 +151,22 @@ class ProfilesController < ApplicationController
   end
 
 
-
-  # def find_profile_worker
-  #   @profile = profile.find(session[:profile_id])
-  # end
-
   def session_profile_not_empty?
     !session[:profile_id].nil?
   end
 
   def profile_params
     params.require(:profile).permit(:name, :last_name, :birthday, :type_profile, :country, :address, :personal_number, :vehicle , :photo, :phone, :email)
+  end
+
+  def set_type_profile(profile , user)
+
+    if user.type_profile == @type_customer
+      profile.type_profile = 'Customer'
+    else
+      profile.type_profile = 'Professional'
+    end
+    profile.save!
   end
 
 end

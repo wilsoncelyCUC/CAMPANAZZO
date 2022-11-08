@@ -16,13 +16,12 @@
 <div class="container imagen-perfil">
   <div class="pictures">
     <%if @profile.photo.key %>
-    <%= cl_image_tag @profile.photo.key, class: "avatar-large margin-top-negative center mb-3" %>
+      <%= cl_image_tag @profile.photo.key, class: "avatar-large margin-top-negative center mb-3" %>
     <%else %>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
+      <%= link_to (image_tag "avatar_my_profile.jpg", class: "avatar-large margin-top-negative center mb-3"), edit_profile_path(@profile)%>
     <%end %>
   </div>
 </div>
-
   <%if @profile.type_profile == 'Customer' %>
 <div class="container">
   <div class="customer-section ">
@@ -49,10 +48,7 @@
         <p><i class="fa-solid fa-id-card"></i> <strong>Cédula de Ciudadanía:</strong></p>
         <p><%= @profile.personal_number.nil? ? 'Sin Cédula' :  @profile.personal_number %></p>
       </div>
-      <div class="date d-flex justify-content-between">
-        <p><i class="fa-brands fa-whatsapp"></i> <strong>Numero De Whatsapp</strong></p>
-        <p><%= @profile.phone.nil? ? 'Sin Numero' :  @profile.phone %></p>
-      </div>
+
     </div>
 
     <div class="mt-3 d-flex justify-content-between">
@@ -60,12 +56,14 @@
       <%= link_to 'Cambiar Password', edit_user_registration_path, class: "btn-myprofile-edit"  %>
     </div>
     <hr class="mt-1">
-    <div class="trabajos">
       <div class="date d-flex justify-content-between">
         <p><i class="fa-solid fa-envelope"></i> <strong>Correo Electrónico</strong></p>
         <p><%= @user_profile.email.nil? ? 'Sin email' :  @user_profile.email %></p>
       </div>
-    </div>
+      <div class="d-flex justify-content-between">
+        <p><i class="fa-brands fa-whatsapp"></i> <strong>Numero De Whatsapp</strong></p>
+        <p><%= @user_profile.whatsapp.nil? ? 'Sin Numero' :  @user_profile.whatsapp %></p>
+      </div>
 
     <h2 class="small-title mt-3">Trabajos</h2>
     <hr class="mt-1">
@@ -104,10 +102,6 @@
         <p><i class="fa-solid fa-id-card"></i> <strong>Cédula de Ciudadanía:</strong></p>
         <p><%= @profile.personal_number.nil? ? 'Sin Cédula' :  @profile.personal_number %></p>
       </div>
-      <div class="date d-flex justify-content-between">
-        <p><i class="fa-brands fa-whatsapp"></i> <strong>Numero De Whatsapp</strong></p>
-        <p><%= @profile.phone.nil? ? 'Sin Numero' :  @profile.phone %></p>
-      </div>
 
 
     <div class="mt-3 d-flex justify-content-between">
@@ -116,12 +110,15 @@
     </div>
 
     <hr class="mt-1">
-    <div class="trabajos">
       <div class="date d-flex justify-content-between">
         <p><i class="fa-solid fa-envelope"></i> <strong>Correo Electrónico</strong></p>
         <p><%= @user_profile.email.nil? ? 'Sin email' :  @user_profile.email %></p>
       </div>
-    </div>
+      <div class="d-flex justify-content-between">
+        <p><i class="fa-brands fa-whatsapp"></i> <strong>Numero De Whatsapp</strong></p>
+        <p><%= @user_profile.whatsapp.nil? ? 'Sin Numero' :  @user_profile.whatsapp %></p>
+      </div>
+
 
       <h2 class="small-title mt-3">Trabajos</h2>
       <hr class="mt-1">
@@ -188,6 +185,7 @@
 
   <%else %>
   <div class="other">
+    <p><%= @profile.type_profile %></p>
     <h2>Other</h2>
   </div>
   <%end %>

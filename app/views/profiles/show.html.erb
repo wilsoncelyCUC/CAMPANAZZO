@@ -19,7 +19,7 @@
  <% if @profile_worker.photo.key %>
     <%= cl_image_tag @profile_worker.photo.key, class: "avatar-large margin-top-negative center mb-3" %>
   <% else %>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
+    <%= image_tag "avatar_my_profile.jpg", class: "avatar-large margin-top-negative center mb-3"  %>
   <%  end %>
   </div>
   <div class="show-worker-description">
