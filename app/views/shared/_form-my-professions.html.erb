@@ -1,14 +1,12 @@
 <%= simple_form_for(@my_profession) do |f| %>
     <%= f.input :profession_id,  collection: Profession.all, required: false %>:
-    <%= f.input :year %>
+    <%= f.input :year ,label: 'Cuando años de experiencia tienes'%>
     <%= f.input :price_hour%>
     <%= f.input :price_day%>
-    <%= f.input :bio%>
 
-    <div class="buttons">
-      <%= f.submit class:"btn-flat" %>
-      <button class= "create-gradient" href="#">
-        <%= link_to "Return to home page", root_path %>
-      </button>
+    <%= f.input :bio,
+                placeholder: "Ej: Hola yo soy __. Tengo experiencia trabajando en __ [empresa] haciendo pequeños trabajos de reparación como colocar estantes, parchar agujeros en la pared, pintar y retocar, reemplazar lámparas y ventiladores, y también montar televisores y obras de arte. Me encanta la variedad de arreglar cosas aleatorias”. " %>
+    <div class="form-actions mt-3">
+      <%= f.submit 'Crear Anuncio', class:"btn-campanazzo" %>
     </div>
   <% end %>

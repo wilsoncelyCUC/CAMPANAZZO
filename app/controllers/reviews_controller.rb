@@ -12,7 +12,8 @@ class ReviewsController < ApplicationController
     find_my_profession(@post, @profile_worker)
     @review.profile = @profile_worker
     @review.post = @post
-    @review.my_profession= @my_profession.first
+    @review.my_profession = @my_profession.first
+
     if @review.save
       redirect_to profile_path(@profile_worker)
     else

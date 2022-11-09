@@ -16,12 +16,13 @@
 
 <div class="container">
   <div class="pictures">
- <% if @profile_worker.photo.key %>
+    <%if @profile_worker.photo.key %>
     <%= cl_image_tag @profile_worker.photo.key, class: "avatar-large margin-top-negative center mb-3" %>
-  <% else %>
+    <%else %>
     <%= image_tag "avatar_my_profile.jpg", class: "avatar-large margin-top-negative center mb-3"  %>
-  <%  end %>
+    <%end %>
   </div>
+
   <div class="show-worker-description">
     <p><%= @my_profession.nil? ? "Bienvenidos a mi perfil.  Quiero ayudarte, por lo que mira mis competencia y seleccióname cuando necesites." : @my_profession.bio  %></p>
   </div>
@@ -33,18 +34,18 @@
   </div>
 
   <div class="" data-controller="booker">
-  <% if @profile_connected == @profile_worker  %>
+    <% if @profile_connected == @profile_worker  %>
     <div class="button-selectionar" >
       <button class="btn-campanazzo">Editar</button>
     </div>
-  <% elsif (session[:flow_basic] == 'terminated')|| ( session[:flow_basic] == 'new' && session[:post_id] == nil) %>
+    <% elsif (session[:flow_basic] == 'terminated')|| ( session[:flow_basic] == 'new' && session[:post_id] == nil) %>
     <div class=" mt-3 d-flex p-2 " >
       <% session[:selected_profile_worker_id] = @profile_worker.id %>
       <%= link_to 'Contratar', new_post_path, class: "btn-campanazzo"  %>
       <%# <button class="btn-campanazzo">Contratar</button> %>
     </div>
 
-  <% else %>
+    <% else %>
 
     <div class="button-selectionar" data-booker-target="select">
       <button class="btn-campanazzo" data-action="click->booker#displayForm">Seleccionar</button>
@@ -58,9 +59,8 @@
     </div>
 
 
-  <% end %>
+    <% end %>
   </div>
-
 
 </div>
 
@@ -76,8 +76,8 @@
               <h5><%= profile_customer.name %> <%= profile_customer.last_name[0].capitalize %>.</h5>
             </div>
             <div class="card-review-top-date">
-              <p><%= review.created_at.strftime("%m/%d/%Y") %></p>
-              <p><%#= review.created_at.strftime("%A %b %d") %></p>
+              <p><%= time_ago_in_words review.created_at %></p>
+              <p><%#= review.created_at.strftime("%m/%d/%Y") %></p>
             </div>
 
             <div class="card-review-top-actions d-none ">

@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
       if @profile.type_profile == 'Customer'
         redirect_to root_path
       else
-        redirect_to my_profile_path
+        redirect_to new_my_profession_path
       end
     else
       render :new
