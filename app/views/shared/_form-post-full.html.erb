@@ -5,9 +5,7 @@
     <%= f.input :quick_assessment, label: '¿Podrías estimar la complejidad?', collection: Post::ASSESSMENT%>
     <%= f.input :transport,label: '¿ Se require vehiculo ?',  collection: Post::TRANSPORT%>
     <div class="buttons">
-      <%= f.submit class:"btn-flat" %>
-      <button class= "create-gradient" href="#">
-        <%= link_to "Return to home page", root_path %>
-      </button>
+      <%= f.submit 'Crear Anuncio', class:"btn-campanazzo" %>
+
     </div>
   <% end %>
