@@ -12,17 +12,27 @@
   </div>
 
   <div class="mb-3 mt-3">
-    <h1>Current Professions</h1>
+    <h1>Professions (# of workers)</h1>
   </div>
 
   <div class="cards-professions">
     <% @professions.each do |profession| %>
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title"><%= profession.name %></h5>
-        <p class="card-text">Recommended price <%= profession.recommended_price %></p>
-        <p class="card-text">Number of worker <%= Profile.joins(:my_professions).where(my_professions:{profession_id: profession.id}).count %></p>
-        <%= link_to 'Edit', edit_profession_path(profession) %>
+    <div class="card" style="width: 100% ;">
+      <div class="card-product">
+        <% if !profession.photo.key.nil? %>
+          <%=  cl_image_tag(profession.photo.key) %>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= profession.name %>( <%= Profile.joins(:my_professions).where(my_professions:{profession_id: profession.id}).count %>)</h5>
+          <p class="card-text">Recommended price <%= profession.recommended_price %></p>
+          <p class="card-text">ID =  <%= profession.id %></p>
+          <div class="d-flex justify-content-around mt-1 my-customer-edit">
+            <%= link_to '', edit_profession_path(profession), class: 'fas fa-pencil-alt text-decoration-none mr-3  ' %>
+            <%= link_to '', profession_path(profession), data: { turbo_method: :delete, confirm: "¿ estas seguro que quieres eliminar la actividad?"}, class: 'far fa-trash-alt text-decoration-none' %>
+          </div>
+        </div>
       </div>
     </div>
     <% end %>

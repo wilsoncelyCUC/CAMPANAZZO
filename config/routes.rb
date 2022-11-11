@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "profiles/filter", to: "profiles#filter"
   get "profiles/all", to: "profiles#all"
   get "my_profile", to: "profiles#my_profile"
+  get "professions/autocomplete", to: "professions#autocomplete"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")

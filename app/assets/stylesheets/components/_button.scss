@@ -27,6 +27,16 @@
   text-decoration: none;
 }
 
+.btn-flat2 {
+  color: $cwhite;
+  height: 2.5rem;
+  padding: 8px 24px;
+  border-radius: 16px;
+  background: $cfirst;
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
 .btn-flat:hover {
   background: $csecond;
   color: $cwhite;

@@ -1,0 +1,16 @@
+<% session[:flow_basic] = 'new'%>
+<% session[:post_id] = nil %>
+<% session[:selected_profile_worker_id] = nil%>
+
+<div data-controller="autocomplete" data-autocomplete-url-value="/professions/autocomplete"  role="combobox" class='search-form-control form-group '>
+  <form action="/posts/new" method="get">
+
+    <input type="text" class="form-control string" data-autocomplete-target="input" placeholder="¿Que Buscas? (Ej: Limpieza)..."/>
+    <input type="hidden" class="form-control string" name="profession_id" data-autocomplete-target="hidden"/>
+    <ul class="list-group" data-autocomplete-target="results"></ul>
+    <button name="button" type="submit" class="btn btn-flat2">
+      <i class="fas fa-search"></i> Search
+    </button>
+  </form>
+
+</div>

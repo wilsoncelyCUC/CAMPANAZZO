@@ -8,7 +8,6 @@ before_action :find_profession, only: [:edit, :update, :destroy]
   def new
     @profession = Profession.new
     @professions = Profession.all
-
   end
 
   def create
@@ -31,10 +30,21 @@ before_action :find_profession, only: [:edit, :update, :destroy]
     end
   end
 
+  def destroy
+    @profession.posts.delete_all
+    @profession.my_professions.delete_all
+    @profession.delete
+    redirect_to professions_path, status: :see_other
+  end
+
+  def autocomplete
+    @professions = Profession.where("name LIKE ?","%#{params[:q]}%")
+    render layout: false
+  end
 
   private
   def profession_params
-    params.require(:profession).permit(:name, :recommended_price, :currency, :unit, :url_photo)
+    params.require(:profession).permit(:name, :recommended_price, :currency, :unit, :photo , :url_photo)
   end
 
   def find_profession
