@@ -1,0 +1,5 @@
+<% num = 0 %>
+<% @professions.each do |profession| %>
+  <li class="list-group-item" role="option" data-autocomplete-value= <%=profession.id.to_s %>><%=profession.name %></li>
+  <% num = num + 1 %>
+<% end %>

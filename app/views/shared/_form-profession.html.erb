@@ -3,7 +3,7 @@
     <%= f.input :recommended_price %>
     <%= f.input :unit, collection: Profession::UNIT%>
     <%= f.input :currency, collection: Profession::CURRENCY%>
-    <%= f.input :url_photo%>
+    <%= f.input :photo, label: 'Icon',  as: :file %>
 
     <div class="buttons">
       <%= f.submit class:"btn-flat" %>

@@ -1,124 +1,44 @@
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/7546562/pexels-photo-7546562.jpeg?cs=srgb&dl=pexels-max-vakhtbovych-7546562.jpg&fm=jpg);">
   <div class="container">
-    <h1>Reserva un Trabajador en 3 pasos!</h1>
+    <h1>Encuentra Trabajador En 3 Pasos!</h1>
     <p>  <span data-controller="typed-js"></span></p>
+    <div class="write mt-3">
+      <div class="start-form">
+        <%= render '/shared/form-start2-auto' %>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="professiones mt-3">
   <div class="container">
-    <h2>1) Selecciona la persona que necesitas</h2>
-    <p>Haciendo click en el icono de la profección que buscas.</p>
+    <h2>Profesionales Utilies Para Nuestra Vida Cotidiana</h2>
+    <p>Haz CLIC en el icono para contratar rapidamente Un Professional</p>
 
     <div class="row my-3">
-      <div class="col-3 text-center " >
-        <%= link_to image_tag("handyman.png", class: "avatar-home"), new_post_path %>
-        <%= link_to 'Obrero a domicilio', new_post_path , class: "text-decoration-none"%>
-      </div>
-      <div class="col-3 text-center ">
-        <%= link_to image_tag("cleaner.png", class: "avatar-home"), new_post_path  %>
-        <%= link_to 'Limpieza a domicilio', new_post_path, class: "text-decoration-none"%>
-      </div>
-      <div class="col-3 text-center ">
-        <%= link_to image_tag("nails.png", class: "avatar-home"), new_post_path  %>
-        <%= link_to 'Uñas a domicilio', new_post_path , class: "text-decoration-none"%>
-      </div>
-      <div class="col-3 text-center ">
-        <%= link_to image_tag("model.png", class: "avatar-home"), new_post_path  %>
-        <%= link_to 'Peluquero a domicilio', new_post_path , class: "text-decoration-none"%>
-      </div>
-      <div class="col-3 text-center ">
-        <%= link_to image_tag("painter.png", class: "avatar-home"), new_post_path  %>
-        <%= link_to 'Pintor a domicilio', new_post_path , class: "text-decoration-none"%>
-      </div>
-      <div class="col-3 text-center ">
-        <%= link_to image_tag("massage.png", class: "avatar-home"), new_post_path  %>
-        <%= link_to 'Enfermera a domicilio', new_post_path , class: "text-decoration-none"%>
-      </div>
+      <%@profession_top.each do |profession, num_workers|  %>
+        <div class="col-3 text-center  d-flex flex-column" >
+          <% if !profession.photo.key.nil? %>
+          <%= link_to cl_image_tag(profession.photo.key, class: "avatar-home"), new_post_path(params.merge(profession_id: profession.id.to_s)) %>
+          <% else %>
+          <%= image_tag("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg", class: "avatar-home") %>
+          <% end %>
+          <%= link_to profession.name, new_post_path(params.merge(profession_id: profession.id.to_s)) , class: "text-decoration-none"%>
     </div>
 
-    <div class="write mt-3">
-      <div class="start-form">
-        <%= render '/shared/form-start' %>
-      </div>
-    </div>
-  </div>
-
-</div>
-<!--
-<div class="container ">
-  <div class="show-selectionar mt-3 d-flex p-2  ">
-    <%= link_to 'Seleccionar', '#', class: "btn-campanazzo" %>
-  </div>
-
-  <div class="home-work-near-me">
-    <h2>Trabajos mas buscados en mi sector</h2>
-    <div class="cards">
-      <% @professions.each do |profession| %>
-      <div class="card-product">
-        <img src= <%=profession.url_photo %> />
-        <div class="card-product-infos">
-          <h2><%= profession.name %></h2>
-          <p>Precio promedio <strong><%= profession.recommended_price %></strong> <%= profession.currency %></p>
-          <p>Por <%= profession.unit %></p>
-        </div>
-      </div>
       <% end %>
-    </div>
-  </div>
-
-  <div class="card-feedback">
-    <img src="https://images.pexels.com/photos/4939597/pexels-photo-4939597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Picture happy living">
-    <div class="mini-container">
-      <h2>Para que la vida se más sencilla</h2>
-      <ul class ="list-inline ">
-        <li><i class="fa-solid fa-check-double"></i> Selecciona un Trabajador en funcion de sus competencias, precio y <strong>recomendaciones</strong></li>
-        <li><i class="fa-solid fa-calendar-check"></i>   Elige el horario que mas te conviene </li>
-        <li><i class="fa-brands fa-rocketchat"></i>   Chatea, paga y evalua a tu trabajador</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="home-workers">
-    <h2>Algunos trabajadores listos para ayudarte</h2>
-    <div class="cards">
-      <% @profiles_top.each do |profile| %>
-      <div class="card-home-campanazzo">
-        <div class="card-home-campanazzo-top">
-          <div class="card-home-campanazzo-picture">
-            <i class="card-like fa-brands fa-pagelines"></i>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
-          </div>
-          <div class="card-home-campanazzo-info">
-            <div class="card-home-campanazzo-details">
-              <h2><strong><%=profile.name%> <%= profile.last_name %></strong></h2>
-            </div>
-            <p><strong> 100 Recomendaciones</strong></p>
-            <div class="rating">
-            <% start = (profile.score.ceil) %>
-            <% start.times do |start| %>
-            <i class="fas fa-star"></i>
-            <% end %>
-            <% (5-start).times do |start| %>
-            <i class="far fa-star"></i>
-            <% end %>
-            </div>
-            <p> <i class="fa-solid fa-truck"></i> Bicicleta</p>
-          </div>
-        </div>
-        <div class="card-home-campanazzo-bottom">
-          <h3>competencias Utiles</h3>
-          <div class="card-home-campanazzo-myProfessions">
-            <p>Jardineria</p>
-            <p>40 EU</p>
-          </div>
-        </div>
-      </div>
-        <% end %>
-      </div>
-    </div>
   </div>
 
 </div>
---->
+
+<div class="porque">
+  <div class="container">
+    <h2>¿Por Que Campanazzo?</h2>
+    <p>En este video de un minuto te explicamos la razón por la que creamos <strong>Campanazzo</strong> </p>
+    <div class="video d-flex justify-content-center">
+      <div id="player"></div>
+
+    </div>
+
+</div>

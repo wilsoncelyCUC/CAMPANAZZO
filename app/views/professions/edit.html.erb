@@ -1,7 +1,20 @@
 <h1>Edit</h1>
 <p> RESTRICTED ACCESS</p>
 
-<%= render "shared/form-profession", profession: @profession %>
+<%= simple_form_for(@profession) do |f| %>
+    <%= f.input :name  %>
+    <%= f.input :recommended_price %>
+    <%= f.input :unit, collection: Profession::UNIT%>
+    <%= f.input :currency, collection: Profession::CURRENCY%>
+    <%= f.input :photo, label: 'Icon',  as: :file %>
+
+    <div class="buttons">
+      <%= f.submit class:"btn-flat" %>
+      <button class= "create-gradient" href="#">
+        <%= link_to "Return to home page", root_path %>
+      </button>
+    </div>
+  <% end %>
 <ul class="nav">
   <li><%= link_to "Back", root_path, :class => "nav-item px-1"%></li>
 </ul>
