@@ -13,7 +13,6 @@ class PostsController < ApplicationController
     @post = Post.new
     params.permit!
 
-#    params.require(:post).permit(:profession_id)
     #session[:profession_name] = params[:search].nil? ? '' : params[:search][:profession] #storing the input from form-start into the session variable
     session[:profession_name] = params[:profession_id].nil? ? '' : Profession.find(params[:profession_id]).name #storing the input from form-start into the session variable
     @profile_contratar_buttom = session[:selected_profile_worker_id].nil? ? '' : Profile.find(session[:selected_profile_worker_id])

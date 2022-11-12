@@ -110,14 +110,12 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    get_profile
-    # if session_profile_not_empty?
-    #   find_profile
-    #   @profession = get_profession(session[:profession_name])
-    #   @my_profession = (MyProfession.where(profile_id: @profile_worker.id).where(profession_id: @profession.id)).first
-    # else
-    #   @profile = profile.new
-    # end
+    find_post
+    get_profile #get profile customer from current user
+    if session_profile_not_empty?
+      @profession = get_profession(session[:profession_name])
+      @my_profession = (MyProfession.where(profile_id: @profile_worker.id).where(profession_id: @profession.id)).first
+    end
 
     @reservation = Reservation.new
 
@@ -143,7 +141,11 @@ class ProfilesController < ApplicationController
   end
 
   def find_post
-    @post = Post.find(session[:post_id])
+     if session[:post_id].nil?
+      @post = Post.new
+     else
+      @post = Post.find(session[:post_id])
+     end
   end
 
   def find_review(profile_worker, profile )
@@ -152,7 +154,7 @@ class ProfilesController < ApplicationController
 
 
   def session_profile_not_empty?
-    !session[:profile_id].nil?
+    !session[:selected_profile_worker_id].nil?
   end
 
   def profile_params
