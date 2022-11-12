@@ -8,8 +8,6 @@ class PagesController < ApplicationController
     @profiles = Profile.all.order("score DESC")
     @profiles_top= (Profile.where(score: 4..5 )).limit(5).order("score DESC")
     session[:profile_worker] = nil
-
-
   end
 
 # to remove after components developpement
@@ -33,8 +31,9 @@ private
         counter += 1
       end
     end
-
     @profession_top = @profession_top.sort_by{ |k, v| v }.reverse.to_h
   end
+
+
 
 end
