@@ -58,6 +58,7 @@ class PostsController < ApplicationController
       @post.profile_id = @profile_customer.id
       if @post.save
         @post.name = "Servicio de #{profession.name}"
+        @post.save
         session[:post_id] = @post.id
         redirect_to profiles_path
       else
@@ -89,7 +90,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update

@@ -32,9 +32,9 @@
             <%if (profile.type_professional == 'Elite')  %>
               <i class="card-like fa-brands fa-pagelines"></i>
              <% end %>
-            <% if profile.photo.key %>
+             <% if profile.photo.key %>
               <%= link_to (cl_image_tag profile.photo.key, class: "avatar-campanazzo-picture"), profile_path(profile) %>
-            <% else %>
+              <% else %>
               <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
               <%  end %>
           </div>

@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   belongs_to :profession
   has_many :reservations, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  enum state: { Pendiente: 0, Acceptada: 1, Rechazada: 2, Cancelada: 3, Nuevabusqueda: 4 , Realizada: 5}
+  enum state: { pendiente: 0, acceptada: 1, rechazada: 2, cancelada: 3, nuevabusqueda: 4 , realizada: 5}
 
  # validates :profession_id, presence: true
 

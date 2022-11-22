@@ -1,14 +1,26 @@
 <div class="navbar-container">
+  <% if user_signed_in? %>
+      <%@profile_connected = Profile.find_by(user_id: current_user.id)%>
+
   <div class="mobile-navbar">
     <%= link_to root_path do %>
       <i class="fa-regular fa-compass"></i>
       <% end %>
+  <% if @profile_connected.type_profile == 'Customer' %>
     <%= link_to posts_path do %>
       <i class="fa-regular fa-clipboard"></i>
+    <% end %>
+  <% else %>
+    <%= link_to reservations_path  do %>
+      <i class="fa-regular fa-clipboard"></i>
       <% end %>
+  <% end %>
+
+  <% if  @profile_connected.type_profile == 'Customer' %>
     <%= link_to root_path do %>
         <%= image_tag "Logo-campa plus purple.png", id: "navbar-logo" %>
       <% end %>
+  <% end %>
     <%= link_to root_path do %>
       <i class="fa-regular fa-message"></i>
       <% end %>
@@ -16,4 +28,6 @@
       <i class="fa-regular fa-user"></i>
       <% end %>
   </div>
+    <% end %>
+
 </div>

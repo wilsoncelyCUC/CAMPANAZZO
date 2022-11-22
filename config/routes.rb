@@ -16,16 +16,14 @@ Rails.application.routes.draw do
   resources :professions
   resources :profiles do
     resources :post, only: [:index]
-    resources :reservations, only: [:new, :create, :index]
+    resources :reservations, only: [:new, :create ]
   end
   resources :posts do
-    resources :reservations, only: [:new, :create, :index]
+    resources :reservations, only: [:new, :create ]
     resources :reviews, only: [:new, :create, :edit, :update, :destroy]
 
   end
-  resources :reservations, only: [:update, :destroy]
-
-
+  resources :reservations, only: [:index, :show, :update, :destroy]
   resources :my_professions
   #resources :review, only:[:new, :create]
 
