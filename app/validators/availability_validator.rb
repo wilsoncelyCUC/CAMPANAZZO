@@ -1,6 +1,7 @@
 class AvailabilityValidator < ActiveModel::EachValidator
 
   def validate_each(record, attribute, value)
+    byebug
     bookings = Reservation.where(["profile_id =?", record.profile_id])
     date_ranges = bookings.map { |b| b.start_date.to_datetime..b.end_date.to_datetime }
 

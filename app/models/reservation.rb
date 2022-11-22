@@ -3,9 +3,9 @@ class Reservation < ApplicationRecord
   belongs_to :profile
 #  belongs_to :my_profession
 
-  enum status: { Pendiente: 0, Acceptada: 1, Rechazada: 2, Cancelada: 3, Nuevabusqueda: 4 , Realizada: 5}
+  enum status: { pendiente: 0, acceptada: 1, rechazada: 2, cancelada: 3, nuevabusqueda: 4 , realizada: 5}
 
-  validates :start_date, :end_date, presence: true, availability: true
+  validates :start_date, :end_date, presence: true#, availability: true
   validate :end_date_after_start_date
 
   private
