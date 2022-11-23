@@ -4,11 +4,17 @@ class ApplicationController < ActionController::Base
   before_action :get_types_profiles
 
   def configure_permitted_parameters
+    added_attrs = [:whatsapp, :login, :email, :encrypted_password, :password_confirmation, :remember_me]
+    devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)
+    devise_parameter_sanitizer.permit(:account_update, keys: added_attrs)
+    devise_parameter_sanitizer.permit(:sign_in, keys: added_attrs)
+
     # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:whatsapp, :type_profile])
+    #devise_parameter_sanitizer.permit(:sign_up, keys: [:whatsapp, :type_profile])
+    #devise_parameter_sanitizer.permit(:sign_in, keys: [:login, :password])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:whatsapp, :type_profile])
+    #devise_parameter_sanitizer.permit(:account_update, keys: [:whatsapp, :type_profile])
   end
 
   def after_sign_in_path_for(resource)
@@ -17,8 +23,8 @@ class ApplicationController < ActionController::Base
     else
       root_path
     end
-
   end
+
 
 
   private
