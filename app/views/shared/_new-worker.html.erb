@@ -8,7 +8,11 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "type_profile" } %>
-    <%= f.input :birthday , label: 'Fecha de nacimiento'%>
+    <%= f.input :birthday ,
+                :as => :date, :start_year => Date.today.year - 60,
+                                  :end_year => Date.today.year - 12,
+                                  :order => [:day, :month, :year],
+                label: 'Fecha de nacimiento'%>
     <%= f.input :address , label: 'Dirección'%>
     <%= f.input :photo, label: 'Foto de Perfil',  as: :file %>
     <%= f.input :personal_number,

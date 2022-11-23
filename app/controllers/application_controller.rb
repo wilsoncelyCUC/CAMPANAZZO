@@ -3,12 +3,22 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :get_types_profiles
 
-  def configure_permitted_parameters
-    # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:whatsapp, :type_profile])
+  # To enable sign in to function correctly.
+  skip_before_action :verify_authenticity_token, :only => :create
 
-    # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:whatsapp, :type_profile])
+  # def configure_permitted_parameters
+  #   # For additional fields in app/views/devise/registrations/new.html.erb
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:whatsapp, :type_profile])
+
+  #   # For additional in app/views/devise/registrations/edit.html.erb
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:whatsapp, :type_profile])
+  # end
+
+  def configure_permitted_parameters
+    added_attrs = [:whatsapp, :login, :email, :encrypted_password, :encrypted_password_confirmation, :remember_me, :type_profile]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+    devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
   end
 
   def after_sign_in_path_for(resource)
@@ -17,7 +27,6 @@ class ApplicationController < ActionController::Base
     else
       root_path
     end
-
   end
 
 
