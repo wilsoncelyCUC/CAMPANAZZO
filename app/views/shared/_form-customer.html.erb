@@ -1,7 +1,12 @@
 <%= simple_form_for(@profile) do |f| %>
     <%= f.input :name, label: 'Nombre'%>
     <%= f.input :last_name, label: 'Apellido' %>
-    <%= f.input :birthday , label: 'Fecha de nacimiento'%>
+    <%= f.input :birthday :birthday ,
+                :as => :date,
+                :start_year => Date.today.year - 60,
+                :end_year => Date.today.year - 12,
+                :order => [:day, :month, :year],
+                label: 'Fecha de nacimiento'%>
     <%= f.input :address , label: 'Dirección'%>
     <%= f.input :phone , label: 'Celular (E.G. 3005520741)'%>
     <%= f.input :email , label: 'Correo Electrónico'%>

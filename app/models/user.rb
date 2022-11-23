@@ -14,5 +14,22 @@ class User < ApplicationRecord
   TYPE_PROFILE = [ "#{@type_customer}" , "#{@type_worker}"  ]
   # the variables : @type_customer and @type_worker were declared on the application controller
 
+  attr_accessor :login
 
+  def login
+    @login || self.whatsapp || self.email
+  end
+
+  def email_required?
+    false
+  end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:whatsapp)
+      where(conditions.to_h).where(["lower(whatsapp) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    elsif conditions.has_key?(:whatsapp) || conditions.has_key?(:email)
+      where(conditions.to_h).first
+    end
+  end
 end

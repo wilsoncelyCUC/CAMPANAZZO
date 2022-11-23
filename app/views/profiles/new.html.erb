@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="text-center my-3">Nuevo Cliente</h1>
-
+  <%# byebug %>
   <% if current_user.type_profile ==  @type_customer %>
     <%= render "shared/new-customer", profile: @profile %>
   <% elsif current_user.type_profile == @type_worker %>

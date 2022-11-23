@@ -1,6 +1,6 @@
 <div class="navbar-container">
-  <% if user_signed_in? %>
-      <%@profile_connected = Profile.find_by(user_id: current_user.id)%>
+  <% if user_signed_in?  && !Profile.find_by(user_id: current_user.id).nil?%>
+      <%@profile_connected = Profile.find_by(user_id: current_user.id) %>
 
   <div class="mobile-navbar">
     <%= link_to root_path do %>
