@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="selectprofession"
 export default class extends Controller {
-  static targets = ["choice" , "price", "form"] ;
+  static targets = ["choice" , "price", "form", "pricereco"] ;
 
   connect() {
     console.log(this.formTarget.baseURI);
@@ -24,6 +24,8 @@ export default class extends Controller {
         var strpro = profession.id.toString();
         if (strpro === selection){
           this.priceTarget.innerText = profession.unit ;
+          this.pricerecoTarget.innerText = profession.recommended_price ;
+
         }
       });
     });
