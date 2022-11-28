@@ -3,11 +3,23 @@ before_action :find_profession, only: [:edit, :update, :destroy]
 
   def index
     @professions = Profession.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: { professions: @professions } }
+    end
+
   end
 
   def new
     @profession = Profession.new
     @professions = Profession.all
+
+    respond_to do |format|
+      format.html
+      format.json {render json: professions = @professions}
+    end
+
   end
 
   def create

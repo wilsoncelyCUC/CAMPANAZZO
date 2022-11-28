@@ -3,15 +3,16 @@
                 label: 'Nombre',
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "type_profile" } %>
+                input_html: { autocomplete: "name" } %>
     <%= f.input :last_name, label: 'Apellido',
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "type_profile" } %>
+                input_html: { autocomplete: "last_name" } %>
     <%= f.input :birthday ,
-                :as => :date, :start_year => Date.today.year - 60,
-                                  :end_year => Date.today.year - 12,
-                                  :order => [:day, :month, :year],
+                :as => :date,
+                :start_year => Date.today.year - 60,
+                :end_year => Date.today.year - 12,
+                :order => [:day, :month, :year],
                 label: 'Fecha de nacimiento'%>
     <%= f.input :address , label: 'Dirección'%>
     <%= f.input :photo, label: 'Foto de Perfil',  as: :file %>
@@ -19,7 +20,7 @@
                 label: 'Cedula',
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "type_profile" } %>
+                input_html: { autocomplete: "personal_number" } %>
 
     <div class="buttons">
       <%= f.submit   'Inscribirse Como Trabajador', class:"btn-campanazzo" %>

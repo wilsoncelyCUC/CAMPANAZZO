@@ -1,12 +1,35 @@
-<%= simple_form_for(@my_profession) do |f| %>
-    <%= f.input :profession_id,  collection: Profession.all, required: false %>:
-    <%= f.input :year ,label: 'Cuando años de experiencia tienes'%>
-    <%= f.input :price_hour%>
-    <%= f.input :price_day%>
+<div class="" data-controller="selectprofession"data-selectprofession-target="form">
+  <%= simple_form_for(@my_profession) do |f| %>
+      <%= f.input :profession_id,
+                  collection: Profession.all,
+                  required: false,
+                  input_html: {
+                    data: { selectprofession_target: 'choice',
+                    action: 'change->selectprofession#displayfield'}}
+                  %>
 
-    <%= f.input :bio,
-                placeholder: "Ej: Hola yo soy __. Tengo experiencia trabajando en __ [empresa] haciendo pequeños trabajos de reparación como colocar estantes, parchar agujeros en la pared, pintar y retocar, reemplazar lámparas y ventiladores, y también montar televisores y obras de arte. Me encanta la variedad de arreglar cosas aleatorias”. " %>
-    <div class="form-actions mt-3">
-      <%= f.submit 'Crear Anuncio', class:"btn-campanazzo" %>
-    </div>
-  <% end %>
+      <%= f.input :year ,label: 'Cuando años de experiencia tienes'%>
+      <%= f.input :price_hour,
+                  label: 'Precio',
+                  wrapper_html: { class: '', data: { selectprofession_target: 'phour' } }
+                  %>
+     <div class="d-flex mb-3">
+        <p>Precio por = </p><p> </p> <p data-selectprofession-target="price">Hora</p>
+     </div>
+     <div class="d-flex mb-3"">
+        <p>Precio Recomendadado = </p><p> </p> <p data-selectprofession-target="pricereco">tbd</p>
+
+     </div>
+      <%= f.input :price_day,
+                  label: 'Precio/extra',
+                  wrapper_html: { class: 'd-none', data: { selectprofession_target: 'pday' } }
+                  %>
+
+      <%= f.input :bio,
+                  placeholder: "Ej: Hola yo soy __. Tengo experiencia trabajando en __ [empresa] haciendo pequeños trabajos de reparación como colocar estantes, parchar agujeros en la pared, pintar y retocar, reemplazar lámparas y ventiladores, y también montar televisores y obras de arte. Me encanta la variedad de arreglar cosas aleatorias”. " %>
+      <div class="form-actions mt-3">
+        <%= f.submit 'Agregar', class:"btn-campanazzo" %>
+      </div>
+    <% end %>
+
+</div>
