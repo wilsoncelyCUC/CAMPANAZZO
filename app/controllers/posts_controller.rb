@@ -37,7 +37,6 @@ class PostsController < ApplicationController
         @reservation.start_date = @reservation.start_date.to_datetime #validator only works with datetime and not with TimeToZone
 
         if @reservation.save!
-
           session[:post_id] = nil
           session[:flow_basic] = 'terminated'
           session[:selected_profile_worker_id] = nil

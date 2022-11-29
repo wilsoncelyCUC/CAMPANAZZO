@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :home, :home_worker ]
 
   def home
     home_params
@@ -8,6 +8,9 @@ class PagesController < ApplicationController
     @profiles = Profile.all.order("score DESC")
     @profiles_top= (Profile.where(score: 4..5 )).limit(5).order("score DESC")
     session[:profile_worker] = nil
+  end
+
+  def home_worker
   end
 
 # to remove after components developpement

@@ -25,7 +25,11 @@ class ApplicationController < ActionController::Base
     if Profile.find_by(user_id: current_user.id).nil?
       new_profile_path
     else
-      root_path
+      if (Profile.find_by(user_id: current_user.id)).type_profile == 'Professional'
+        pages_home_worker_path
+      else
+        root_path
+      end
     end
   end
 
