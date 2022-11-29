@@ -1,7 +1,12 @@
 <%= simple_form_for(@post) do |f| %>
-  <%= f.input :address, label: '¿ Cual es tu dirección ?' %>
-  <%= f.input :quick_assessment, label: '¿Podrías estimar la complejidad?', collection: Post::ASSESSMENT%>
-  <%= f.input :description, label: '¿ Dinos más sobre la tarea?' %>
+  <%= f.input :address,
+              label: '¿ Cual es tu dirección ?',
+              input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+              wrapper_html: {data: {controller: "address-autocomplete",
+              address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+  %>
+  <%= f.input :quick_assessment, label: '¿Por cuanto tiempo? (opcional)', collection: Post::ASSESSMENT%>
+  <%= f.input :description, label: '¿ Dinos más ? (opcional) '  %>
 
 <div class="buttons">
   <%= f.submit 'Crear Anuncio' ,class:"btn-campanazzo" %>
