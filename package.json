@@ -2,8 +2,10 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.1.0",
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.0",
+    "mapbox-gl": "^2.11.0",
     "star-rating.js": "^4.3.0",
     "typed.js": "^2.0.12"
   }
