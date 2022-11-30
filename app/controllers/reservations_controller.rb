@@ -54,6 +54,8 @@ class ReservationsController < ApplicationController
     end
     @my_profession = MyProfession.where(profile_id: @profile_worker.id , profession_id: @post.profession_id ).first
     @profile_customer = Profile.find(@post.profile_id)
+    @price_point = @post.quick_assessment.nil? ? 1 : @post.quick_assessment[0].to_i
+
   end
 
   def edit
