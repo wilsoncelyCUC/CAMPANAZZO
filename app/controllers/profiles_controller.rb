@@ -141,7 +141,7 @@ class ProfilesController < ApplicationController
   end
 
   def find_post
-     if session[:post_id].nil?
+     if session[:post_id].nil? || (session[:post_id] == true)
       @post = Post.new
      else
       @post = Post.find(session[:post_id])

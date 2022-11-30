@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   def index
     find_profile_customer
     @posts = Post.all
-    @my_posts_current = Post.joins(:reservations).where( profile_id:  @profile_customer.id ).where( "reservations.start_date >= ?", Date.today).references(:reservations)
+    @my_posts_current = Post.joins(:reservations).where( profile_id:  @profile_customer.id ).where( "reservations.start_date >= ? AND reservations.status = ?", Date.today, 0).references(:reservations)
+    @my_posts_accepted = Post.joins(:reservations).where( profile_id:  @profile_customer.id ).where( "reservations.start_date >= ? AND reservations.status = ?", Date.today, 1).references(:reservations)
     #@my_posts_current = Post.where('date >= ? AND profile_id = ?' , DateTime.now,  @profile_customer.id )
     @my_posts_past = Post.where('date < ? AND profile_id = ?' , DateTime.now,  @profile_customer.id )
   end
@@ -37,7 +38,6 @@ class PostsController < ApplicationController
         @reservation.start_date = @reservation.start_date.to_datetime #validator only works with datetime and not with TimeToZone
 
         if @reservation.save!
-
           session[:post_id] = nil
           session[:flow_basic] = 'terminated'
           session[:selected_profile_worker_id] = nil
@@ -87,6 +87,7 @@ class PostsController < ApplicationController
       @reservation = @post.reservations.first.nil? ? nil : @post.reservations.first
     end
     @my_profession = MyProfession.where(profile_id: @profile_worker.id , profession_id: @post.profession_id ).first
+    @price_point = @post.quick_assessment.nil? ? 1 : @post.quick_assessment[0].to_i
   end
 
   def edit

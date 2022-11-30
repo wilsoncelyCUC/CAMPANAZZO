@@ -23,6 +23,7 @@
     <%end %>
   </div>
 
+<%  if @profile_worker.type_profile ==  'Professional'%>
   <div class="show-worker-description">
     <p><%= @my_profession.nil? ? "Bienvenidos a mi perfil.  Quiero ayudarte, por lo que mira mis competencia y seleccióname cuando necesites." : @my_profession.bio  %></p>
   </div>
@@ -33,6 +34,7 @@
     <% end %>
   </div>
 
+  <%# byebug %>
   <div class="" data-controller="booker">
     <% if @profile_connected == @profile_worker  %>
     <div class="button-selectionar" >
@@ -61,6 +63,7 @@
 
     <% end %>
   </div>
+
 
 </div>
 
@@ -106,3 +109,26 @@
     <% end %>
 
   </div>
+<% else %>
+<div class="container">
+  <div class="customer-section ">
+    <hr class="mt-1">
+    <div class="my-profession-info">
+      <div class="date d-flex justify-content-between">
+        <p> <i class="fa-solid fa-octagon-plus"></i> <strong>Cliente Desde</strong></p>
+        <p><%= @profile_worker.created_at.nil? ? 'Sin fecha' :  ( @profile_worker.created_at.strftime("%A %Y-%m-%d"))%></p>
+      </div>
+      <div class="date d-flex justify-content-between">
+        <p><i class="fa-solid fa-cake-candles"></i> <strong>Fecha De Nacimiento</strong></p>
+        <p><%= @profile_worker.birthday.nil? ? 'Sin Fecha De Nacimiento' :  @profile_worker.birthday %></p>
+      </div>
+
+<h2 class="small-title mt-3">Trabajos</h2>
+    <hr class="mt-1">
+    <div class="trabajos">
+      <div class="date d-flex justify-content-between">
+        <p>Numero de Trabajos </p>
+        <p><%= @profile_worker.posts.nil? ? 'Dejate ayudar' : @profile_worker.posts.count%></p>
+      </div>
+    </div>
+<% end %>

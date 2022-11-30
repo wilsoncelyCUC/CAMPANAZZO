@@ -3,24 +3,25 @@
       <%@profile_connected = Profile.find_by(user_id: current_user.id) %>
 
   <div class="mobile-navbar">
+  <% if @profile_connected.type_profile == 'Customer' %>
     <%= link_to root_path do %>
       <i class="fa-regular fa-compass"></i>
-      <% end %>
-  <% if @profile_connected.type_profile == 'Customer' %>
+    <% end %>
     <%= link_to posts_path do %>
       <i class="fa-regular fa-clipboard"></i>
     <% end %>
+    <%= link_to root_path do %>
+      <%= image_tag "Logo-campa plus purple.png", id: "navbar-logo" %>
+    <% end %>
   <% else %>
+    <%= link_to pages_home_worker_path do %>
+      <i class="fa-regular fa-compass"></i>
+    <% end %>
     <%= link_to reservations_path  do %>
       <i class="fa-regular fa-clipboard"></i>
       <% end %>
   <% end %>
 
-  <% if  @profile_connected.type_profile == 'Customer' %>
-    <%= link_to root_path do %>
-        <%= image_tag "Logo-campa plus purple.png", id: "navbar-logo" %>
-      <% end %>
-  <% end %>
     <%= link_to root_path do %>
       <i class="fa-regular fa-message"></i>
       <% end %>

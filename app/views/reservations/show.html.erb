@@ -44,7 +44,11 @@
     <hr class="mt-2 ">
     <div class="precio d-flex justify-content-between">
       <p><i class="fa-solid fa-dollar-sign"></i> <strong>Precio:</strong></p>
-      <p><%= @my_profession.nil? ? 'Sin precio' :  number_to_currency(@my_profession.price_hour, {unit: '$', precision: 0}) %></p>
+      <p><%= @my_profession.nil? ? 'Sin precio' :  number_to_currency(@my_profession.price_hour*@price_point, {unit: '$', precision: 0}) %></p>
+    </div>
+     <div class="direccion d-flex justify-content-between">
+      <p><i class="fa-solid fa-clock"></i> <strong>Tiempo De Trabajo:</strong></p>
+      <p><%= @post.quick_assessment.nil? ? '1 hora' :  @post.quick_assessment %></p>
     </div>
     <div class="direccion d-flex justify-content-between">
       <p><i class="fa-solid fa-location-pin"></i> <strong>Dirección:</strong></p>
