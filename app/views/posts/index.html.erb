@@ -7,6 +7,9 @@
       <button class="nav-link active" id="pills-current-tab" data-bs-toggle="pill" data-bs-target="#pills-current" type="button" role="tab" aria-controls="pills-current" aria-selected="true">Actual</button>
     </li>
     <li class="nav-item" role="presentation">
+      <button class="nav-link " id="pills-past-tab" data-bs-toggle="pill" data-bs-target="#pills-accepted" type="button" role="tab" aria-controls="pills-past" aria-selected="false">Acceptadas</button>
+    </li>
+     <li class="nav-item" role="presentation">
       <button class="nav-link " id="pills-past-tab" data-bs-toggle="pill" data-bs-target="#pills-past" type="button" role="tab" aria-controls="pills-past" aria-selected="false">Pasado</button>
     </li>
   </ul>
@@ -63,6 +66,58 @@
 
 
     </div>
+
+    <div class="tab-pane fade show active" id="pills-accepted" role="tabpanel" aria-labelledby="pills-current-tab">
+      <div class="cards">
+        <% @my_posts_accepted.each do |post| %>
+        <div class="card-post">
+          <div class="card-post-head">
+            <h2><%= post.name %></h2>
+          </div>
+          <div class="card-post-body">
+              <% if !post.reservations.empty? %>
+            <div class="card-post-body-right">
+              <p><i class="fa-solid fa-calendar-days"></i> <%= post.reservations.empty? ? "Sin Fecha" : post.reservations.first.start_date.strftime("%A %Y-%m-%d")  %></p>
+              <p><i class="fa-solid fa-clock"></i> <%= post.reservations.first.start_date.nil? ? "??" :  post.reservations.first.start_date.strftime("%l:%M %P") %> - <%= post.reservations.first.end_date.nil? ? "??" : post.reservations.first.end_date.strftime("%l:%M %P") %></p>
+              <p><i class="fa-solid fa-car-side"></i>  <%= post.transport %></p>
+            </div>
+            <div class="card-post-body-left">
+              <div class="product-img-div">
+                <% profile = Profile.find( post.reservations.first.profile_id) %>
+                <% profile_customer = Profile.find(post.profile_id) %>
+                <% if profile.photo.key %>
+                  <%= link_to cl_image_tag(profile.photo.key, class: "avatar-medium"), profile_path(profile) %>
+                <% else %>
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-medium" %>
+                <%  end %>
+              </div>
+              <p>Por: <strong><%= profile.nil? ?  'Wilson C.' : profile.name %> <%= profile.nil? ?  'C.' : profile.last_name[0].capitalize %>. </strong> </p>
+            </div>
+              <% else %>
+            <div class="card-post-body-right">
+              <p><i class="fa-solid fa-calendar-days"></i></p>
+              <p><i class="fa-solid fa-clock"></i></p>
+              <p><i class="fa-solid fa-car-side"></i>  <%= post.transport %></p>
+            </div>
+            <div class="card-post-body-left">
+              <div class="product-img-div">
+                <%= image_tag ("wilson_test.png"), class: "avatar-medium" %>
+              </div>
+              <p>By: <strong>Wilson C.</strong> </p>
+            </div>
+              <% end %>
+          </div>
+          <div class="card-post-button">
+            <%= link_to "Detalles", post_path(post), class: "btn-post-action" %>
+            <%= link_to "Chat", "#", class: "btn-post-action" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
+
+    </div>
+
     <div class="tab-pane fade" id="pills-past" role="tabpanel" aria-labelledby="pills-past-tab">
       <div class="cards">
       <% if  !@my_posts_past.nil? %>

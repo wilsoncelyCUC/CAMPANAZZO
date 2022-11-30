@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   def index
     find_profile_customer
     @posts = Post.all
-    @my_posts_current = Post.joins(:reservations).where( profile_id:  @profile_customer.id ).where( "reservations.start_date >= ?", Date.today).references(:reservations)
+    @my_posts_current = Post.joins(:reservations).where( profile_id:  @profile_customer.id ).where( "reservations.start_date >= ? AND reservations.status = ?", Date.today, 0).references(:reservations)
+    @my_posts_accepted = Post.joins(:reservations).where( profile_id:  @profile_customer.id ).where( "reservations.start_date >= ? AND reservations.status = ?", Date.today, 1).references(:reservations)
     #@my_posts_current = Post.where('date >= ? AND profile_id = ?' , DateTime.now,  @profile_customer.id )
     @my_posts_past = Post.where('date < ? AND profile_id = ?' , DateTime.now,  @profile_customer.id )
   end

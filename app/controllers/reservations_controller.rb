@@ -3,9 +3,12 @@ class ReservationsController < ApplicationController
   def index
     find_profile_customer
 
-    @my_reservations_current = Reservation.where('start_date >= ? AND profile_id = ?' , DateTime.now,  Profile.find_by(user_id: current_user.id).id )
+    @my_reservations_current = Reservation.where('start_date >= ? AND profile_id = ? AND status = ?' , DateTime.now,  Profile.find_by(user_id: current_user.id).id , 0)
 
     @my_reservations_past = Reservation.where('start_date < ? AND profile_id = ?' , DateTime.now,  Profile.find_by(user_id: current_user.id).id )
+    @my_reservations_acceptadas  = Reservation.where('start_date < ? AND profile_id = ? AND status = ?' , DateTime.now,  Profile.find_by(user_id: current_user.id).id, 1 )
+
+
   end
 
   def new
@@ -68,17 +71,17 @@ class ReservationsController < ApplicationController
         #byebug
         @reservation.acceptada!
         @reservation.save!
-        redirect_to reservation_path(@reservation)
+        redirect_to reservations_path
         #@reservations_not = @reservation.game.reservations.not_acceptada
         #@reservations_not.each { |resa| resa.rechazada! }
       elsif @status == 'rechazada'
         @reservation.rechazada!
         @reservation.save!
-        redirect_to reservation_path(@reservation)
-        redirect_to reservation_paths
+        redirect_to reservations_path
+        #redirect_to reservation_paths
       else
         @reservation.save
-        redirect_to reservation_path(@reservation)
+        redirect_to reservations_path
        end
   end
 

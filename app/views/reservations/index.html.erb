@@ -7,7 +7,7 @@
       <button class="nav-link active" id="pills-current-tab" data-bs-toggle="pill" data-bs-target="#pills-current" type="button" role="tab" aria-controls="pills-current" aria-selected="true">Trabajo Nuevo</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link " id="pills-past-tab" data-bs-toggle="pill" data-bs-target="#pills-past" type="button" role="tab" aria-controls="pills-past" aria-selected="false">Pasado</button>
+      <button class="nav-link " id="pills-past-tab" data-bs-toggle="pill" data-bs-target="#pills-past" type="button" role="tab" aria-controls="pills-past" aria-selected="false">Acceptadas</button>
     </li>
   </ul>
 
@@ -36,7 +36,7 @@
                 <% profile = Profile.find( post.reservations.first.profile_id) %>
                 <% profile_customer = Profile.find(post.profile_id) %>
                 <% if profile_customer.photo.key %>
-                  <%= link_to cl_image_tag(profile_customer.photo.key, class: "avatar-medium"), profile_path(profile) %>
+                  <%= link_to cl_image_tag(profile_customer.photo.key, class: "avatar-medium"), profile_path( profile_customer) %>
                 <% else %>
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-medium" %>
                 <%  end %>
@@ -69,8 +69,8 @@
     </div>
     <div class="tab-pane fade" id="pills-past" role="tabpanel" aria-labelledby="pills-past-tab">
       <div class="cards">
-      <% if  !@my_reservations_past.nil? %>
-        <% @my_reservations_past.each do |reservation| %>
+      <% if  !@my_reservations_acceptadas.nil? %>
+        <% @my_reservations_acceptadas.each do |reservation| %>
         <% post = reservation.post %>
         <div class="card-post">
           <div class="card-post-head">
@@ -85,11 +85,12 @@
             </div>
             <div class="card-post-body-left">
               <div class="product-img-div">
-                <% profile = Profile.find( post.reservations.first.profile_id) %>
-                <% if profile.photo.key %>
-                  <%= link_to cl_image_tag(profile.photo.key, class: "avatar-medium"), profile_path(profile) %>
+              <% profile = Profile.find( post.reservations.first.profile_id) %>
+                <% profile_customer = Profile.find(post.profile_id) %>
+                <% if profile_customer.photo.key %>
+                  <%= link_to cl_image_tag(profile_customer.photo.key, class: "avatar-medium"), profile_path( profile_customer) %>
                 <% else %>
-                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-medium" %>
+                  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-medium" %>
                 <%  end %>
               </div>
               <p>By: <strong><%= profile.nil? ?  'Wilson C.' : profile.name %> <%= profile.nil? ?  'C.' : profile.last_name[0].capitalize %>. </strong> </p>
