@@ -53,7 +53,7 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 
 # Use to load importmap in heroku
-gem "requestjs-rails", github: "rails/requestjs-rails", branch: "main"
+#gem "requestjs-rails", github: "rails/requestjs-rails", branch: "main"
 
 # faker
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
