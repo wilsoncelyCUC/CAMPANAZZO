@@ -14,6 +14,14 @@ GIT
       actionpack (>= 5.2)
       activemodel (>= 5.2)
 
+GIT
+  remote: https://github.com/rails/requestjs-rails.git
+  revision: bb9d978bd0003f1ddb863fd2c03d55e064254a5b
+  branch: main
+  specs:
+    requestjs-rails (0.0.10)
+      rails (>= 6.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -308,6 +316,7 @@ DEPENDENCIES
   pg_search
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
+  requestjs-rails!
   sassc-rails
   selenium-webdriver
   simple_form!
