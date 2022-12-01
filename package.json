@@ -4,6 +4,7 @@
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "@popperjs/core": "^2.11.6",
+    "@rails/request.js": "^0.0.8",
     "bootstrap": "^5.2.0",
     "mapbox-gl": "^2.11.0",
     "star-rating.js": "^4.3.0",
